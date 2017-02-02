@@ -1,14 +1,3 @@
-.alert-alert {
-  @extend .alert-warning;
-}
-
-.alert-notice {
-  @extend .alert-info;
-}
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 @media only screen and (max-width: 767px) {
   h1 {
     font-size: 7vw;
