@@ -1,0 +1,35 @@
+<%= form_for :property , html: { multipart: true } do |f| %>
+  <% if property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+      <ul>
+      <% property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class:'form-control'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class:'form-control', rows:'5'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class:'form-control'%>
+  </div>
+  <div class="form-check">
+    <%= f.label :available%>
+    <%= f.check_box :available%>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit class:'btn btn-primary'%>
+  </div>
+<% end %>

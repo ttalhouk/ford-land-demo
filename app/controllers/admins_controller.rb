@@ -1,7 +1,8 @@
 class AdminsController < ApplicationController
-  before_action :check_admin_status
+  helper :all
+  before_action :check_admin_status, :set_page
 
-  def index  
+  def index
   end
 
   private
@@ -10,5 +11,8 @@ class AdminsController < ApplicationController
       flash[:error] = "You must be an Admin in to access this section"
       redirect_to root_path
     end
+  end
+  def set_page
+    @page = 'admin'
   end
 end
