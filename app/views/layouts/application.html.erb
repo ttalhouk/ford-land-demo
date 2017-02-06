@@ -16,7 +16,7 @@
       <%=link_to "Company Name", root_path, class:'navbar-brand'%>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li class="nav-item <%= page == 'lease' ? 'active': '' %>">
+          <li class="nav-item <%= @page == 'lease' ? 'active': '' %>">
             <%=link_to "Available For Lease", properties_path, class:'nav-link'%>
           </li>
           <li class="nav-item <%= page == 'calendar' ? 'active': '' %>">
@@ -25,26 +25,35 @@
           <li class="nav-item <%= page == 'gallery' ? 'active': '' %>">
             <a class="nav-link" href="#">Gallery</a>
           </li>
-          <li class="nav-item dropdown <%= page == 'amenites' ? 'active': '' %>">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Amenities
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Restarunt</a>
-              <a class="dropdown-item" href="#">Conference Facility</a>
-              <a class="dropdown-item" href="#">Exercise Facilities</a>
+            <li class="nav-item dropdown <%= @page == 'amenites' ? 'active': '' %>">
+              <a class="nav-link dropdown-toggle" href="/amenties" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Amenities
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <% if amenities_list.any? %>
+                  <% amenities_list.each do |amenity|  %>
+                    <%= link_to amenity, class:"dropdown-item" do %>
+                      <%= amenity.name %>
+                    <% end %>
+                  <% end %>
+              <% end %>
+              <hr />
+              <%= link_to "All", amenities_path, class:"dropdown-item"%>
             </div>
-          </li>
-          <li class="nav-item dropdown <%= page == 'forms' ? 'active': '' %>">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Forms
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Restarunt</a>
-              <a class="dropdown-item" href="#">Conference Facility</a>
-              <a class="dropdown-item" href="#">Exercise Facilities</a>
-            </div>
-          </li>
+
+            </li>
+          <!-- <% if !@forms.nil? %> -->
+            <li class="nav-item dropdown <%= page == 'forms' ? 'active': '' %>">
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Forms
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Restarunt</a>
+                <a class="dropdown-item" href="#">Conference Facility</a>
+                <a class="dropdown-item" href="#">Exercise Facilities</a>
+              </div>
+            </li>
+          <!-- <% end %> -->
           <li class="nav-item <%= page == 'contact' ? 'active': '' %>">
             <a class="nav-link" href="#">Contact</a>
           </li>

@@ -17,24 +17,29 @@ class PropertiesController < ApplicationController
   # GET /properties/1
   # GET /properties/1.json
   def show
+    @pictures = @property.pictures.all
   end
 
   # GET /properties/new
   def new
     @property = Property.new
+    @pictures = Picture.new
   end
 
   # GET /properties/1/edit
   def edit
+    @pictures = @property.pictures
   end
 
   # POST /properties
   # POST /properties.json
   def create
-    @property = Property.new(property_params)
+    input = property_params
+    @property = Property.new({name: input['name'], description: input['description'], available: input['available']})
 
     respond_to do |format|
       if @property.save
+        @property.pictures.create(input['picture'])
         format.html { redirect_to @property, notice: 'Property was successfully created.' }
       else
         format.html { render :new }
@@ -45,8 +50,10 @@ class PropertiesController < ApplicationController
   # PATCH/PUT /properties/1
   # PATCH/PUT /properties/1.json
   def update
+    input = amenity_params
+    @property.pictures.create(input['picture'])
     respond_to do |format|
-      if @property.update(property_params)
+      if @property.update({name: input['name'], description: input['description'], available: input['available']})
         format.html { redirect_to @property, notice: 'Property was successfully updated.' }
       else
         format.html { render :edit }
@@ -72,7 +79,7 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:name, :description, :image, :avaialable)
+      params.require(:property).permit(:name, :description, {picture:['image']}, :avaialable)
     end
     def check_admin_status
       unless is_admin?
