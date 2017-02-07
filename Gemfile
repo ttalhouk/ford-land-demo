@@ -30,7 +30,9 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'paperclip'
-
+gem 'mail_form'
+gem 'simple_form'
+gem "figaro"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
