@@ -1,10 +1,12 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :require_permission
 
   # GET /services
   # GET /services.json
   def index
-    @services = Service.all
+    @services = current_user.services
   end
 
   # GET /services/1
@@ -24,7 +26,7 @@ class ServicesController < ApplicationController
   # POST /services
   # POST /services.json
   def create
-    @service = Service.new(service_params)
+    @service = current_user.services.new(service_params)
 
     respond_to do |format|
       if @service.save
@@ -69,6 +71,11 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:open, :user_id, :detils)
+      params.require(:service).permit(:open, :user_id, :details)
+    end
+    def require_permission
+      if current_user != User.find(params[:user_id])
+        redirect_to root_path
+      end
     end
 end
