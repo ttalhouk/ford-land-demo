@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin?
-    return current_user.admin
+      return user_signed_in? ? current_user.admin : false
   end
 end

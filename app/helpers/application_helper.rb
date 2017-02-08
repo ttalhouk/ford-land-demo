@@ -1,6 +1,6 @@
 module ApplicationHelper
   def is_admin?
-    return current_user ? current_user.admin : false
+      return user_signed_in? ? current_user.admin : false
   end
 
   def amenities_list

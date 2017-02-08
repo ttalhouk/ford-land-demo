@@ -54,7 +54,7 @@
               </div>
             </li>
           <!-- <% end %> -->
-          <% if (!current_user && !is_admin) %>
+          <% if (!user_signed_in? && !is_admin?) %>
             <li class="nav-item <%= page == 'contact' ? 'active': '' %>">
               <%=link_to "Contact Us", contacts_path, class:'nav-link',method: :get%>
             </li>
