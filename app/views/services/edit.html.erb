@@ -1,0 +1,6 @@
+<h1>Editing Service</h1>
+<%= form_for [current_user,@service] do |f| %>
+  <%= render 'form', {service: @service, f: f} %>
+<% end %>
+<%= link_to 'Show', user_service_path(current_user, @service) %> |
+<%= link_to 'Back', user_services_path(current_user) %>

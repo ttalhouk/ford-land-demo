@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Service Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Open</th>
+      <th>Details</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @services.each do |service| %>
+      <tr>
+        <td><%= service.open %></td>
+        <td><%= service.details %></td>
+        <td><%= link_to 'Show', user_service_path(current_user, service) %></td>
+        <td><%= link_to 'Edit', edit_user_service_path(current_user,service) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Service Request', new_user_service_path(current_user) %>

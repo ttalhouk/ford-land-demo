@@ -1,0 +1,28 @@
+<div align="center">
+  <h3>Send A message to Us</h3>
+
+  <%= simple_form_for @contact do |f| %>
+    <div class="form-group">
+      <%= f.label :name, 'Enter Your Name'%>
+      <%= f.text_field :name, :required => true, class:'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email, 'Enter Your Email'%>
+      <%= f.text_field :email, :required => true, type: 'email', class:'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :message, 'Enter Your Message'%>
+      <%= f.text_area :message, :as => :text, :required => true, class:'form-control', rows:'5' %>
+    </div>
+
+    <div class="hidden">
+      <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+    </div>
+    <div>
+      </br>
+      <%= f.button :submit, 'Send message', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
