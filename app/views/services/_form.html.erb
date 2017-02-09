@@ -10,21 +10,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :open %>
-    <%= f.check_box :open %>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= f.label :details %>
-    <%= f.text_field :details %>
+    <%= f.text_area :details, class:'form-control', rows:'5'  %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit', class:'btn btn-primary' %>
   </div>

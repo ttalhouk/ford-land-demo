@@ -30,7 +30,8 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
+        ServiceMailer.service_email(current_user, @service).deliver_now
+        format.html { redirect_to user_service_path(current_user, @service), notice: 'Service Request was successfully created.' }
         format.json { render :show, status: :created, location: @service }
       else
         format.html { render :new }
@@ -71,7 +72,7 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:open, :user_id, :details)
+      params.require(:service).permit(:details)
     end
     def require_permission
       if current_user != User.find(params[:user_id])

@@ -1,5 +1,5 @@
 <h1>New Service Request</h1>
-<%= form_for [current_user,@service] do |f| %>
+<%= form_for [current_user, @service] do |f| %>
   <%= render 'form', {service: @service, f: f} %>
 <% end %>
 
