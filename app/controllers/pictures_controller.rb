@@ -46,7 +46,7 @@ class PicturesController < ApplicationController
     end
   end
   def set_picture
-    @picture = Picture.find(params[:id])
+    @picture = Picture.find(params[:picture_id])
   end
   # Never trust parameters from the scary internet, only allow the white list through.
   def picture_params

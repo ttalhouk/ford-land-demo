@@ -40,8 +40,10 @@ class PropertiesController < ApplicationController
     respond_to do |format|
       if @property.save
         @property.pictures.create(input['picture'])
-        format.html { redirect_to @property, notice: 'Property was successfully created.' }
+        flash[:success] = 'Property was successfully created.'
+        format.html { redirect_to @property }
       else
+        flash[:error] = "There the following errors.  #{@property.errors.full_messages.join("")}"
         format.html { render :new }
       end
     end
@@ -54,8 +56,10 @@ class PropertiesController < ApplicationController
     @property.pictures.create(input['picture'])
     respond_to do |format|
       if @property.update({name: input['name'], description: input['description'], available: input['available']})
-        format.html { redirect_to @property, notice: 'Property was successfully updated.' }
+        flash[:success] = 'Property was successfully updated.'
+        format.html { redirect_to @property}
       else
+        flash[:error] = "There the following errors.  #{@property.errors.full_messages.join("")}"
         format.html { render :edit }
       end
     end
@@ -66,7 +70,8 @@ class PropertiesController < ApplicationController
   def destroy
     @property.destroy
     respond_to do |format|
-      format.html { redirect_to properties_url, notice: 'Property was successfully destroyed.' }
+      flash[:success] = 'Property was successfully removed.'
+      format.html { redirect_to properties_url }
       format.json { head :no_content }
     end
   end

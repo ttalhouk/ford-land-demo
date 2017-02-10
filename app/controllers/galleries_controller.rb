@@ -11,8 +11,10 @@ class GalleriesController < ApplicationController
   def create
     @gallery = Gallery.new
     if @gallery.save
-      format.html { redirect_to galleries_path, notice: 'Gallery was successfully created.' }
+      flash[:success] = 'Gallery was successfully created.'
+      format.html { redirect_to galleries_path}
     else
+      flash[:error] = "Gallery was unable to be created and had the following errors. #{@gallery.errors.full_messages.join('')}" 
       format.html { render :index }
     end
   end

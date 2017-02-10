@@ -1,3 +1,39 @@
 // Place all the styles related to the Galleries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.gallery_box {
+  position: relative;
+  top: 5px;
+  left: 5px;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  padding: 5px auto;
+  // justify-content: space-between;
+}
+.gallery_thumbs {
+  position: relative;
+  flex: 1;
+  display: flex;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 150px;
+  max-height: 150px;
+  min-width: 150px;
+  min-height: 150px;
+  background-color: rgba(#c3c3c3, 0.8);
+  border-radius: 10px;
+  .gallery {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+.remove {
+  position: absolute;
+  top:5px;
+  left: 5px;
+}
