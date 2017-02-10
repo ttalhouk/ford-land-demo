@@ -3,5 +3,14 @@
 
 $(document).ready(function() {
   // commands go here
-  $("a.gallery").fancybox();
+  $("a.gallery").fancybox({
+    'transitionIn'	:	'elastic',
+    'transitionOut'	:	'elastic',
+    'speedIn'		:	250,
+    'speedOut'		:	250,
+    'overlayShow'	:	true,
+    'padding':10,
+    'margin':0,
+    'titlePosition':'over',
+  });
 })
