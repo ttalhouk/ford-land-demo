@@ -1,0 +1,19 @@
+<h1>Gallery Page</h1>
+
+<% if @gallery.pictures.any? %>
+  <% @gallery.pictures.each do |picture| %>
+    <%= link_to picture.image.url, class:"gallery", rel:"gallery_1" do %>
+      <%= image_tag picture.image.url(:thumb) %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="admin-links">
+  <% if is_admin? && !@gallery %>
+  <%= link_to 'Create a Gallery', @gallery, method: :post %>
+  <% end %>
+
+  <% if is_admin? && @gallery%>
+  <%= link_to 'Add Picture', new_gallery_picture_path(@gallery) %>
+  <% end %>
+</div>

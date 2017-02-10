@@ -6,4 +6,7 @@ module ApplicationHelper
   def amenities_list
     Amenity.all
   end
+  def active_gallery
+    Gallery.last || Galler.new
+  end
 end

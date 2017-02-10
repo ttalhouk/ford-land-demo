@@ -79,7 +79,7 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:name, :description, {picture:['image']}, :avaialable)
+      params.require(:property).permit(:name, :description, {picture:['image','caption']}, :avaialable)
     end
     def check_admin_status
       unless is_admin?

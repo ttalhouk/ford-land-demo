@@ -19,11 +19,11 @@
           <li class="nav-item <%= @page == 'lease' ? 'active': '' %>">
             <%=link_to "Available For Lease", properties_path, class:'nav-link'%>
           </li>
-          <li class="nav-item <%= page == 'calendar' ? 'active': '' %>">
+          <li class="nav-item <%= @page == 'calendar' ? 'active': '' %>">
             <a class="nav-link" href="#">Calendar</a>
           </li>
-          <li class="nav-item <%= page == 'gallery' ? 'active': '' %>">
-            <a class="nav-link" href="#">Gallery</a>
+          <li class="nav-item <%= @page == 'gallery' ? 'active': '' %>">
+            <%=link_to "Gallery", gallery_path(active_gallery), class:'nav-link'%>
           </li>
             <li class="nav-item dropdown <%= @page == 'amenites' ? 'active': '' %>">
               <a class="nav-link dropdown-toggle" href="/amenties" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

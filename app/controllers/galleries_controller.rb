@@ -1,0 +1,31 @@
+class GalleriesController < ApplicationController
+  helper :all
+  before_action :check_admin_status, only: [:create]
+  before_action :set_page
+  def index
+    @gallery = Gallery.last || nil
+  end
+  def show
+    @gallery = Gallery.find(params[:id]) || Gallery.new
+  end
+  def create
+    @gallery = Gallery.new
+    if @gallery.save
+      format.html { redirect_to galleries_path, notice: 'Gallery was successfully created.' }
+    else
+      format.html { render :index }
+    end
+  end
+
+  private
+
+  def check_admin_status
+    unless is_admin?
+      flash[:error] = "You must be an Admin in to access this section"
+      redirect_to root_path
+    end
+  end
+  def set_page
+    @page = 'gallery'
+  end
+end
