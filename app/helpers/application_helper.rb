@@ -9,4 +9,5 @@ module ApplicationHelper
   def active_gallery
     Gallery.last || Galler.new
   end
+
 end

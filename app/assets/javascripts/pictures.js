@@ -1,9 +1,13 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-$(document).ready(function() {
-  // commands go here
-  $("a.gallery").fancybox({
+$(document).ready(function(){
+
+
+// $(document).on('turbolinks:load', function(){
+
+  console.log('fancybox active');
+  $('a.gallery').fancybox({
     'transitionIn'	:	'elastic',
     'transitionOut'	:	'elastic',
     'speedIn'		:	250,
@@ -13,4 +17,5 @@ $(document).ready(function() {
     'margin':0,
     'titlePosition':'over',
   });
-})
+
+});
