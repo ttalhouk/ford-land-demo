@@ -11,6 +11,7 @@
   align-items: center;
   align-content: center;
   padding: 5px auto;
+
   // justify-content: space-between;
 }
 .gallery_thumbs {
@@ -27,10 +28,14 @@
   min-height: 150px;
   background-color: #3c3c3c;
   border-radius: 10px;
+  z-index: 200;
+  // border: solid 3px #ffffff;
+  overflow: hidden;
   .gallery {
     position: absolute;
     border-radius: 10px;
-    border: solid 3px white;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
     opacity: .65;
     transform: scale(1);
@@ -39,6 +44,7 @@
       transform: scale(1.2);
       opacity: 1;
       z-index: 100;
+      // border: solid 3px white;
     }
   }
 
@@ -47,4 +53,5 @@
   position: absolute;
   top:5px;
   left: 5px;
+  z-index: 9999;
 }
