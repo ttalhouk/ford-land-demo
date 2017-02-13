@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
     <title>Ford Land Company, LLC</title>
     <%= csrf_meta_tags %>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+    <link href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' rel='stylesheet' />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -19,11 +21,11 @@
           <li class="nav-item <%= @page == 'lease' ? 'active': '' %>">
             <%=link_to "Available For Lease", properties_path, class:'nav-link'%>
           </li>
-          <li class="nav-item <%= page == 'calendar' ? 'active': '' %>">
+          <li class="nav-item <%= @page == 'calendar' ? 'active': '' %>">
             <a class="nav-link" href="#">Calendar</a>
           </li>
-          <li class="nav-item <%= page == 'gallery' ? 'active': '' %>">
-            <a class="nav-link" href="#">Gallery</a>
+          <li class="nav-item <%= @page == 'gallery' ? 'active': '' %>">
+            <%=link_to "Gallery", gallery_path(active_gallery), class:'nav-link', data:{'turbolinks':  false}%>
           </li>
             <li class="nav-item dropdown <%= @page == 'amenites' ? 'active': '' %>">
               <a class="nav-link dropdown-toggle" href="/amenties" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -80,6 +82,12 @@
         </ul>
       </div>
     </nav>
+    <% if flash[:success] %>
+      <p class="alert alert-success"><%= flash[:success] %></p>
+    <% end %>
+    <% if flash[:error] %>
+      <p class="alert alert-danger"><%= flash[:error] %></p>
+    <% end %>
     <div class="container">
       <%= yield %>
     </div>

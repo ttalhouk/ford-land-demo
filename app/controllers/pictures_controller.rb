@@ -8,21 +8,24 @@ class PicturesController < ApplicationController
   end
 
   def new
+    @picture = Picture.new
   end
 
   def create
     @picture = @item.pictures.new(picture_params)
-    if @picture.save
-      format.html { redirect_to @item, notice: 'Picture was successfully added.' }
-    else
-      format.html { render :new }
+    respond_to do |format|
+      if @picture.save
+        format.html { redirect_to @path, notice: 'Picture was successfully added.' }
+      else
+        format.html { render :new }
+      end
     end
   end
 
   def destroy
     @picture.destroy
     respond_to do |format|
-      format.html { redirect_to @item, notice: 'Picture was successfully destroyed.' }
+      format.html { redirect_to @path, notice: 'Picture was successfully destroyed.' }
       format.json { head :no_content }
     end
 
@@ -33,16 +36,21 @@ class PicturesController < ApplicationController
   def set_item
     if params[:amenity_id]
       @item = Amenity.find(params[:amenity_id])
-    elsif parmas[:property_id]
+      @path = "/amenities/#{params[:amenity_id]}"
+    elsif params[:property_id]
       @item = Property.find(params[:property_id])
+      @path = "/propeties/#{params[:property_id]}"
+    elsif params[:gallery_id]
+      @item = Gallery.find(params[:gallery_id])
+      @path = "/galleries/#{params[:gallery_id]}"
     end
   end
   def set_picture
-    @picture = Picture.find(params[:id])
+    @picture = Picture.find(params[:picture_id])
   end
   # Never trust parameters from the scary internet, only allow the white list through.
   def picture_params
-    params.require(:picture.permit(:image))
+    params.require(:picture).permit(:image, :caption)
   end
   def check_admin_status
     unless is_admin?

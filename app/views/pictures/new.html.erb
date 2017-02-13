@@ -1,2 +1,15 @@
-<h1>Pictures#new</h1>
-<p>Find me in app/views/pictures/new.html.erb</p>
+<h1>Add A New Picture</h1>
+
+<%= form_for [@item, @picture] , html: { multipart: true }  do |f|%>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class:'form-control-file'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :caption %>
+    <%= f.text_field :caption, class:'form-control'%>
+  </div>
+  <div class="actions">
+    <%= f.submit class:'btn btn-primary'%>
+  </div>
+<% end %>

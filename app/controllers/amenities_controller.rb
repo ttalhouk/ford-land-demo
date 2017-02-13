@@ -36,9 +36,11 @@ class AmenitiesController < ApplicationController
     respond_to do |format|
       if @amenity.save
         @amenity.pictures.create(input['picture'])
-        format.html { redirect_to @amenity, notice: 'Amenity was successfully created.' }
+        flash[:success] = 'Amenity was successfully created.'
+        format.html { redirect_to @amenity}
 
       else
+        flash[:error] = "There the following errors.  #{@amenity.errors.full_messages.join("")}"
         format.html { render :new }
 
       end
@@ -53,8 +55,10 @@ class AmenitiesController < ApplicationController
 
     respond_to do |format|
       if @amenity.update({name: input['name'], description: input['description']})
-        format.html { redirect_to @amenity, notice: 'Amenity was successfully updated.' }
+        flash[:success] = 'Amenity was successfully updated.'
+        format.html { redirect_to @amenity}
       else
+        flash[:error] = "There the following errors.  #{@amenity.errors.full_messages.join("")}"
         format.html { render :edit }
       end
     end
@@ -65,7 +69,8 @@ class AmenitiesController < ApplicationController
   def destroy
     @amenity.destroy
     respond_to do |format|
-      format.html { redirect_to amenities_url, notice: 'Amenity was successfully destroyed.' }
+      flash[:success] =  'Amenity was successfully removed.'
+      format.html { redirect_to amenities_url}
       format.json { head :no_content }
     end
   end
@@ -78,7 +83,7 @@ class AmenitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def amenity_params
-      params.require(:amenity).permit(:name, :description, {picture:['image']})
+      params.require(:amenity).permit(:name, :description, {picture:['image','caption']})
     end
     def check_admin_status
       unless is_admin?
