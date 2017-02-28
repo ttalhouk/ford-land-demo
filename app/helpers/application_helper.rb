@@ -7,7 +7,7 @@ module ApplicationHelper
     Amenity.all
   end
   def active_gallery
-    Gallery.last || Galler.new
+    Gallery.last || Gallery.new
   end
 
 end
