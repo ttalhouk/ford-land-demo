@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>Ford Land Company, LLC - Admin Page</title>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+    <link href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' rel='stylesheet' />
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="admin-header">
+      <nav class="navbar navbar-toggleable-md">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <%= link_to "Admin Control Panel", admin_path, class:"navbar-brand" %>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <%= link_to "Home", root_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%=link_to "Sign Out", destroy_user_session_path, class:'nav-link btn btn-danger btn-lg',method: :delete%>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <% if flash[:success] %>
+      <p class="alert alert-success"><%= flash[:success] %></p>
+    <% end %>
+    <% if flash[:error] %>
+      <p class="alert alert-danger"><%= flash[:error] %></p>
+    <% end %>
+    <div class="row">
+      <div class="col-md-3">
+        <section class="admin-sidebar">
+          <%= render "layouts/shared/sidebar" %>
+        </section>
+      </div>
+      <div class="col-md-9">
+
+        <%= yield %>
+      </div>
+
+    </div>
+  </body>
+</html>

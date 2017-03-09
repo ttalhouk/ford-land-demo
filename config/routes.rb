@@ -5,18 +5,34 @@ Rails.application.routes.draw do
   root 'home#index'
   match '/contacts',     to: 'contacts#new',             via: 'get'
   resources "contacts", only: [:new, :create]
-  resources :admins, only: [:index]
 
-  resources :amenities do
-    resources :pictures, only: [:new, :create, :destroy]
+
+  namespace :admin do
+    get '/', to:'home#index'
+    resources :amenities do
+      resources :pictures, only: [:new, :create, :destroy]
+    end
+    resources :properties do
+      resources :pictures, only: [:new, :create, :destroy]
+    end
+    resources :users, only:[:index] do
+    end
+    resources :services
+    resources :galleries, only:[:index, :show] do
+      resources :pictures, only: [:new, :create, :destroy]
+    end
   end
-  resources :properties do
-    resources :pictures, only: [:new, :create, :destroy]
+
+  resources :amenities, only:[:index, :show] do
+    # resources :pictures, only: [:new, :create, :destroy]
+  end
+  resources :properties, only:[:index, :show] do
+    # resources :pictures, only: [:new, :create, :destroy]
   end
   resources :users, only:[:index] do
     resources :services
   end
-  resources :galleries, only:[:index, :show, :create] do
-    resources :pictures, only: [:new, :create, :destroy]
+  resources :galleries, only:[:show] do
+    # resources :pictures, only: [:new, :create, :destroy]
   end
 end

@@ -1,9 +1,9 @@
-class AdminsController < ApplicationController
-  helper :all
+class AdminController < ApplicationController
+  # helper :all
   before_action :check_admin_status, :set_page
-
-  def index
-  end
+  layout 'admin/admin'
+  # def index
+  # end
 
   private
   def check_admin_status
