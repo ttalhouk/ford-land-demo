@@ -11,84 +11,14 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <%=link_to "Company Name", root_path, class:'navbar-brand'%>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item <%= @page == 'lease' ? 'active': '' %>">
-            <%=link_to "Available For Lease", properties_path, class:'nav-link'%>
-          </li>
-          <li class="nav-item <%= @page == 'calendar' ? 'active': '' %>">
-            <a class="nav-link" href="#">Calendar</a>
-          </li>
-          <li class="nav-item <%= @page == 'gallery' ? 'active': '' %>">
-            <%=link_to "Gallery", gallery_path(active_gallery), class:'nav-link', data:{'turbolinks':  false}%>
-          </li>
-            <li class="nav-item dropdown <%= @page == 'amenites' ? 'active': '' %>">
-              <a class="nav-link dropdown-toggle" href="/amenties" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Amenities
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <% if amenities_list.any? %>
-                  <% amenities_list.each do |amenity|  %>
-                    <%= link_to amenity, class:"dropdown-item" do %>
-                      <%= amenity.name %>
-                    <% end %>
-                  <% end %>
-              <% end %>
-              <hr />
-              <%= link_to "All", amenities_path, class:"dropdown-item"%>
-            </div>
-
-            </li>
-          <!-- <% if !@forms.nil? %> -->
-            <li class="nav-item dropdown <%= page == 'forms' ? 'active': '' %>">
-              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Forms
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Restarunt</a>
-                <a class="dropdown-item" href="#">Conference Facility</a>
-                <a class="dropdown-item" href="#">Exercise Facilities</a>
-              </div>
-            </li>
-          <!-- <% end %> -->
-          <% if (!user_signed_in? && !is_admin?) %>
-            <li class="nav-item <%= page == 'contact' ? 'active': '' %>">
-              <%=link_to "Contact Us", contacts_path, class:'nav-link',method: :get%>
-            </li>
-          <%end%>
-          <% if (current_user) %>
-            <li class="nav-item">
-              <%=link_to "Sign Out", destroy_user_session_path, class:'nav-link',method: :delete%>
-            </li>
-            <% if is_admin? %>
-              <li class="nav-item <%= page == 'admin' ? 'active': '' %>">
-                <%=link_to "Admin Page", admins_path, class:'nav-link'%>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%=link_to "Service Requests", user_services_path(current_user), class:'nav-link',method: :get%>
-              </li>
-            <% end%>
-          <% else %>
-            <li class="nav-item">
-              <%=link_to "Log In", new_user_session_path, class:'nav-link'%>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
+    <%= render "layouts/shared/navigation" %>
     <% if flash[:success] %>
       <p class="alert alert-success"><%= flash[:success] %></p>
     <% end %>
     <% if flash[:error] %>
       <p class="alert alert-danger"><%= flash[:error] %></p>
     <% end %>
-    <div class="container">
+    <div class="container-fluid">
       <%= yield %>
     </div>
   </body>

@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209233156) do
+ActiveRecord::Schema.define(version: 20170214214947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "amenities", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -36,13 +36,13 @@ ActiveRecord::Schema.define(version: 20170209233156) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "caption",            default: ""
+    t.text     "caption",            default: ""
     t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id", using: :btree
   end
 
   create_table "properties", force: :cascade do |t|
     t.string   "name",                       null: false
-    t.string   "description",                null: false
+    t.text     "description",                null: false
     t.boolean  "available",   default: true
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20170209233156) do
   create_table "services", force: :cascade do |t|
     t.boolean  "open",       default: true
     t.integer  "user_id"
-    t.string   "details"
+    t.text     "details"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end

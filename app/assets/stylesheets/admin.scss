@@ -1,0 +1,62 @@
+// Place all the styles related to the Admins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.admin-sidebar{
+  padding-top: 5px;
+  min-height: 100vh;
+  border-radius: 10px;
+  background-color: #ababab;
+
+}
+
+.admin-links{
+  list-style: none;
+  padding: 0;
+}
+.admin-link{
+  &:hover{
+    text-decoration: none;
+  }
+}
+.admin-item{
+  text-align: center;
+  font-size: 120%;
+  color: #ededed;
+  transition: all .5s ease;
+  &:hover{
+    color:#5e5e5e;
+    background-color:#ededed;
+  }
+
+}
+
+h2.sidebar-title {
+  color:  #ededed;
+  font-size: 150%;
+  word-spacing: 2px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  &:after {
+    display: block;
+    height: 2px;
+    background-color: #ededed;
+    content: '';
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 15px;
+  }
+}
+
+.admin-table {
+  margin: 0, auto;
+  min-width: 100%;
+  th {
+    text-align: center;
+    vertical-align: middle;
+  }
+  td {
+    vertical-align: middle;
+  }
+}

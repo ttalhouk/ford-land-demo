@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag @pictures.last.image.url(:medium), class:'img'%>
+
 <p>
   <strong>Name:</strong>
   <%= @amenity.name %>
@@ -9,6 +11,11 @@
   <strong>Description:</strong>
   <%= @amenity.description %>
 </p>
-
-<%= link_to 'Edit', edit_amenity_path(@amenity) %> |
+<% if is_admin? %>
+  <%= link_to 'Edit', edit_amenity_path(@amenity) %> |
+<% end %>
 <%= link_to 'Back', amenities_path %>
+<br>
+<% @pictures.each do |picture|%>
+<%= image_tag picture.image.url(:medium), class:'img'%>
+<% end %>

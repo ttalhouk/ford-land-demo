@@ -7,7 +7,7 @@
       <%= image_tag picture.image.url(:thumb) %>
       <% end %>
       <% if is_admin? %>
-        <%= button_to gallery_picture_path(@gallery), method: 'delete', class:'btn btn-danger btn-sm remove', params: {picture_id: picture.id}, data: { confirm: 'Are you sure?' } do %>
+        <%= button_to admin_gallery_picture_path(@gallery), method: 'delete', class:'btn btn-danger btn-sm remove', params: {picture_id: picture.id}, data: { confirm: 'Are you sure?' } do %>
           <i class="ion-close"></i>
         <% end %>
       <% end %>
@@ -16,7 +16,7 @@
   <% end %>
   <% if is_admin? && @gallery%>
   <div class="gallery_thumbs">
-    <%= button_to new_gallery_picture_path(@gallery),class:'btn btn-success btn-lg add' do %>
+    <%= button_to new_admin_gallery_picture_path(@gallery),class:'btn btn-success btn-lg add' do %>
       <i class="ion-plus-round"></i>
     <% end %>
   </div>
