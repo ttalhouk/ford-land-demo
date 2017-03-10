@@ -48,3 +48,15 @@ h2.sidebar-title {
     margin-top: 15px;
   }
 }
+
+.admin-table {
+  margin: 0, auto;
+  min-width: 100%;
+  th {
+    text-align: center;
+    vertical-align: middle;
+  }
+  td {
+    vertical-align: middle;
+  }
+}
