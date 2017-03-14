@@ -30,6 +30,23 @@
 
 }
 
+li.active {
+  color:#4e4e4e;
+  background-color:#dadada;
+  &:after{
+    content:'';
+    display: inline-block;
+    float: right;
+    position: relative;
+    left: 16px;
+    width: 16px;
+    height: 32px;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    border-left: 16px solid #dadada;
+  }
+}
+
 h2.sidebar-title {
   color:  #ededed;
   font-size: 150%;

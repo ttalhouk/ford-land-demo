@@ -1,0 +1,15 @@
+<% @users.each do |user| %>
+<tr class='info-row'>
+  <th scope="row"><%= user.id %></th>
+  <td class="text-left search-field"><%= user.email %></td>
+  <td><%= (user.admin ? "<i style='color: green' class='ion-checkmark'></i>" : "<i style='color: red'class='ion-close'></i> ").html_safe%></td>
+  <td><%= user.services.count %></td>
+  <td>
+    <div class="btn-group" role="group" aria-label="Admin Controls for User">
+      <%= link_to "Details", admin_user_path(user), class:"btn btn-info" %>
+      <%= link_to "Edit", edit_admin_user_path(user),remote: true, class:"btn btn-primary" %>
+      <%= link_to "Delete", admin_user_delete_path(user), class:"btn btn-danger", remote: true %>
+    </div>
+  </td>
+</tr>
+<% end %>

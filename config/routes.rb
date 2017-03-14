@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resources :pictures, only: [:new, :create, :destroy]
     end
     resources :users, only:[:index, :show, :edit, :update, :destroy] do
+      get "delete"
       resources :services, only:[:index]
     end
     resources :services
