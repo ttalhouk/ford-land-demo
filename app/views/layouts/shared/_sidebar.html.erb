@@ -1,7 +1,7 @@
 <h2 class="text-center sidebar-title">Admin Links</h2>
   <ul class="admin-links">
     <%= link_to admin_users_path, class:"admin-link"  do %>
-      <li class= "admin-item" >
+      <li class= "admin-item <%= @page == "users" ? "active" : ""%>" >
         Users
       </li>
     <% end %>

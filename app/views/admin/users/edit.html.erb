@@ -1,0 +1,12 @@
+<h2>Edit User <%= @user.email %></h2>
+<%= form_for [:admin, @user] do |f| %>
+
+  <div class="field">
+    <%= f.check_box(:admin) %>
+    <%= label_tag(:admin, "Allow admin access to  #{@user.email}?") %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>

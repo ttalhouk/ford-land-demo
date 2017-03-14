@@ -12,12 +12,15 @@
 
   <body>
     <header class="admin-header">
-      <nav class="navbar navbar-toggleable-md">
+      <nav class="navbar navbar-toggleable-sm">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <%= link_to "Admin Control Panel", admin_path, class:"navbar-brand" %>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <small class="navbar-text ml-auto">
+            Logged in as: <%= current_user.email %>
+          </small>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <%= link_to "Home", root_path, class:"nav-link" %>
