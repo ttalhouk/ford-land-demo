@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/', to:'home#index'
     resources :amenities do
+      get "delete"
       resources :pictures, only: [:new, :create, :destroy]
     end
     resources :properties do

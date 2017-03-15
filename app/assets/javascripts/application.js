@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require jquery.tablesorter
 //= require tether
 //= require jquery_ujs
 //= require bootstrap-sprockets

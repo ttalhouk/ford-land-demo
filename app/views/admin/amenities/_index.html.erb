@@ -1,0 +1,14 @@
+<% @amenities.each do |amenity| %>
+<tr class='info-row'>
+  <th scope="row"><%= amenity.id %></th>
+  <td class="text-left search-field"><%= amenity.name %></td>
+  <td><%= truncate(amenity.description, :length => 50, :separator => ' ') %></td>
+  <td>
+    <div class="btn-group" role="group" aria-label="Admin Controls for User">
+      <%= link_to "Details", admin_amenity_path(amenity), class:"btn btn-info" %>
+      <%= link_to "Edit", edit_admin_amenity_path(amenity),remote: true, class:"btn btn-primary" %>
+      <%= link_to "Delete", admin_amenity_delete_path(amenity), class:"btn btn-danger", remote: true %>
+    </div>
+  </td>
+</tr>
+<% end %>

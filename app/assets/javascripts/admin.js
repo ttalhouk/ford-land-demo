@@ -19,4 +19,11 @@ $( document ).on('turbolinks:load', function() {
     }
     searchField.val('');
   });
+
+  // tablesorter
+
+  $("#infoTable").tablesorter({
+    sortList: [0,0]
+  });
+
 });
