@@ -4,8 +4,6 @@ class Admin::PicturesController < AdminController
   before_action :set_item
   before_action :set_picture, only:[:destroy]
 
-  def index
-  end
 
   def new
     @picture = Picture.new
@@ -36,17 +34,17 @@ class Admin::PicturesController < AdminController
   def set_item
     if params[:amenity_id]
       @item = Amenity.find(params[:amenity_id])
-      @path = "/amenities/#{params[:amenity_id]}"
+      @path = "/admin/amenities/#{params[:amenity_id]}"
     elsif params[:property_id]
       @item = Property.find(params[:property_id])
-      @path = "/propeties/#{params[:property_id]}"
+      @path = "/admin/properties/#{params[:property_id]}"
     elsif params[:gallery_id]
       @item = Gallery.find(params[:gallery_id])
-      @path = "/galleries/#{params[:gallery_id]}"
+      @path = "/admin/galleries/#{params[:gallery_id]}"
     end
   end
   def set_picture
-    @picture = Picture.find(params[:picture_id])
+    @picture = Picture.find(params[:id])
   end
   # Never trust parameters from the scary internet, only allow the white list through.
   def picture_params
