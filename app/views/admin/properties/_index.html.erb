@@ -6,9 +6,9 @@
   <td><%= (property.available ? "<i style='color: green' class='ion-checkmark'><span class='hidden'>1</span></i>" : "<i style='color: red'class='ion-close'><span class='hidden'>0</span></i> ").html_safe%></td>
   <td>
     <div class="btn-group" role="group" aria-label="Admin Controls for User">
-      <%= link_to "Details", admin_property_path(property), class:"btn btn-info" %>
-      <%= link_to "Edit", edit_admin_property_path(property),remote: true, class:"btn btn-primary" %>
-      <%= link_to "Delete", admin_property_delete_path(property), class:"btn btn-danger", remote: true %>
+      <%= link_to "Details", admin_property_path(property), class:"btn btn-info btn-sm" %>
+      <%= link_to "Edit", edit_admin_property_path(property),remote: true, class:"btn btn-primary btn-sm" %>
+      <%= link_to "Delete", admin_property_delete_path(property), class:"btn btn-danger btn-sm", remote: true %>
     </div>
   </td>
 </tr>
