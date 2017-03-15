@@ -82,6 +82,9 @@ h2.sidebar-title {
 .admin-table {
   margin: 0, auto;
   min-width: 100%;
+  thead{
+    cursor: pointer;
+  }
   th {
     text-align: center;
     vertical-align: middle;
@@ -90,7 +93,9 @@ h2.sidebar-title {
     vertical-align: middle;
   }
 }
-
+.hidden{
+  display:none;
+}
 .search-bar {
   margin-top: 10px;
   margin-bottom: 10px;

@@ -2,7 +2,7 @@
 <tr class='info-row'>
   <th scope="row"><%= user.id %></th>
   <td class="text-left search-field"><%= user.email %></td>
-  <td><%= (user.admin ? "<i style='color: green' class='ion-checkmark'></i>" : "<i style='color: red'class='ion-close'></i> ").html_safe%></td>
+  <td><%= (user.admin ? "<i style='color: green' class='ion-checkmark'><span class='hidden'>1</span></i>" : "<i style='color: red'class='ion-close'><span class='hidden'>0</span></i> ").html_safe%></td>
   <td><%= user.services.count %></td>
   <td>
     <div class="btn-group" role="group" aria-label="Admin Controls for User">
