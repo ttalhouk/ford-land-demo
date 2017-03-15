@@ -1,0 +1,16 @@
+<% @services.each do |service| %>
+<tr class='info-row'>
+  <th scope="row"><%= service.id %></th>
+  <td class="text-left search-field"><%= service.user.email %></td>
+  <td><%= truncate(service.details, :length => 35, :separator => ' ') %></td>
+  <td><%= (service.open ? "<i style='color: green' class='ion-checkmark'><span class='hidden'>1</span></i>" : "<i style='color: red'class='ion-close'><span class='hidden'>0</span></i> ").html_safe%></td>
+  <td class="text-left"><%= service.created_at.strftime("%l:%M %P - %m / %d / %Y") %></td>
+  <td>
+    <div class="btn-group" role="group" aria-label="Admin Controls for Services">
+      <%= link_to "Details", admin_service_path(service), class:"btn btn-info btn-sm" %>
+      <%= link_to "Edit", edit_admin_service_path(service),remote: true, class:"btn btn-primary btn-sm" %>
+      <%= link_to "Delete", admin_service_delete_path(service), class:"btn btn-danger btn-sm", remote: true %>
+    </div>
+  </td>
+</tr>
+<% end %>

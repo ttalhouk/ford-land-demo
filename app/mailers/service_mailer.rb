@@ -8,4 +8,11 @@ class ServiceMailer < ApplicationMailer
     # @url  = 'http://example.com/login'
     mail(to: @service_dept_emails, subject: 'Service Request', from: @user.email)
   end
+
+  def service_response_email(admin, user, service_request)
+    @admin = admin
+    @service = service_request
+    # @url  = 'http://example.com/login'
+    mail(to: user.email, subject: 'Service Request Updated', from: admin.email)
+  end
 end

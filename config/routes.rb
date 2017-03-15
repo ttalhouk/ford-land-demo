@@ -21,7 +21,9 @@ Rails.application.routes.draw do
       get "delete"
       resources :services, only:[:index]
     end
-    resources :services
+    resources :services, except: [:new, :create] do
+      get "delete"
+    end
     resources :galleries, only:[:index, :show] do
       resources :pictures, only: [:new, :create, :destroy]
     end
