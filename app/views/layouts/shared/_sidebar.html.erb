@@ -1,19 +1,19 @@
 <h2 class="text-center sidebar-title">Admin Links</h2>
   <ul class="admin-links">
     <%= link_to admin_users_path, class:"admin-link"  do %>
-      <li class= "admin-item <%= @page == "users" ? "active" : ""%>" >
+      <li class= "admin-item <%= @page == "users" ? "current" : ""%>" >
         Users
       </li>
     <% end %>
 
     <%= link_to admin_properties_path, class:"admin-link" do %>
-    <li class= "admin-item" >
+    <li class= "admin-item <%= @page == "lease" ? "current" : ""%>" >
       Properties
     </li>
     <% end %>
 
     <%= link_to admin_amenities_path, class:"admin-link" do %>
-      <li class= "admin-item" >
+      <li class= "admin-item <%= @page == "amenities" ? "current" : ""%>">
         Amenities
       </li>
 
@@ -21,13 +21,13 @@
 
 
     <%= link_to admin_galleries_path, class:"admin-link" do %>
-      <li class= "admin-item" >
+      <li class= "admin-item <%= @page == "galleries" ? "current" : ""%>" >
         Gallery
       </li>
     <% end %>
 
     <%= link_to admin_services_path, class:"admin-link" do %>
-      <li class= "admin-item" >
+      <li class= "admin-item <%= @page == "services" ? "current" : ""%>">
         Service Requests
       </li>
     <% end %>

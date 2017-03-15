@@ -35,7 +35,8 @@ class Admin::UsersController < AdminController
     @users = User.all_except(current_user).order(:id)
     @user.destroy
     respond_to do |format|
-      flash[:success] =  'User was successfully removed.'
+      flash.now[:success] =  'User was successfully removed.'
+
       format.html { redirect_to admin_users_path}
       format.json { head :no_content }
       format.js   { render :layout => false }

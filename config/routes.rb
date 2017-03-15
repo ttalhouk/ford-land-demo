@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :pictures, only: [:new, :create, :destroy]
     end
     resources :properties do
+      get "delete"
       resources :pictures, only: [:new, :create, :destroy]
     end
     resources :users, only:[:index, :show, :edit, :update, :destroy] do

@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .admin-sidebar{
   padding-top: 5px;
+  height: 100%;
   min-height: 100vh;
   border-radius: 10px;
   background-color: #ababab;
@@ -30,9 +31,21 @@
 
 }
 
-li.active {
+li.current {
   color:#4e4e4e;
   background-color:#dadada;
+  &:before{
+    content:'';
+    display: inline-block;
+    float: left;
+    position: relative;
+    left: 0px;
+    width: 16px;
+    height: 32px;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    border-left: 16px solid #ababab;
+  }
   &:after{
     content:'';
     display: inline-block;

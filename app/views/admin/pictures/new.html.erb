@@ -1,0 +1,15 @@
+<h2>Add A New Picture</h2>
+
+<%= form_for [:admin, @item, @picture] , html: { multipart: true }  do |f|%>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class:'form-control-file'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :caption %>
+    <%= f.text_field :caption, class:'form-control'%>
+  </div>
+  <div class="actions">
+    <%= f.submit class:'btn btn-primary'%>
+  </div>
+<% end %>

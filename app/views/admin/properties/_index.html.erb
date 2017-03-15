@@ -1,0 +1,15 @@
+<% @properties.each do |property| %>
+<tr class='info-row'>
+  <th scope="row"><%= property.id %></th>
+  <td class="text-left search-field"><%= property.name %></td>
+  <td><%= truncate(property.description, :length => 50, :separator => ' ') %></td>
+  <td><%= (property.available ? "<i style='color: green' class='ion-checkmark'></i>" : "<i style='color: red'class='ion-close'></i> ").html_safe%></td>
+  <td>
+    <div class="btn-group" role="group" aria-label="Admin Controls for User">
+      <%= link_to "Details", admin_property_path(property), class:"btn btn-info" %>
+      <%= link_to "Edit", edit_admin_property_path(property),remote: true, class:"btn btn-primary" %>
+      <%= link_to "Delete", admin_property_delete_path(property), class:"btn btn-danger", remote: true %>
+    </div>
+  </td>
+</tr>
+<% end %>

@@ -1,0 +1,11 @@
+$("div.messages").html("")
+<% if @property.errors.any? %>
+  <% @property.errors.full_messages.each do |message| %>
+    $("div.messages").append('<p />').html("<p class='alert alert-danger'><%= message.html_safe %></p>"))
+  <% end %>
+<% else %>
+  $("div.messages").html("<p class='alert alert-success'> <%=flash[:success]%> </p>")
+
+  $(".property-index").html("<%= escape_javascript(render 'index') %>")
+  $("#property-modal").modal("hide")
+<% end %>
