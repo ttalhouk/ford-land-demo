@@ -1,34 +1,26 @@
 class Admin::AmenitiesController < AdminController
   helper :all
-  before_action :check_admin_status, only: [:new, :edit, :update, :destroy]
+  # before_action :check_admin_status, only: [:new, :edit, :update, :destroy]
   before_action :set_page
   before_action :set_amenity, only: [:show, :edit, :update, :destroy]
 
-  # GET /amenities
-  # GET /amenities.json
   def index
-    @amenities = Amenity.all
+    @amenities = Amenity.all.order(:id)
   end
 
-  # GET /amenities/1
-  # GET /amenities/1.json
   def show
     @pictures = @amenity.pictures.all
   end
 
-  # GET /amenities/new
   def new
     @amenity = Amenity.new
     @pictures = Picture.new
   end
 
-  # GET /amenities/1/edit
   def edit
     @pictures = @amenity.pictures
   end
 
-  # POST /amenities
-  # POST /amenities.json
   def create
     input = amenity_params
     @amenity = Amenity.new({name: input['name'], description: input['description']})
@@ -37,8 +29,10 @@ class Admin::AmenitiesController < AdminController
       if @amenity.save
         @amenity.pictures.create(input['picture'])
         flash[:success] = 'Amenity was successfully created.'
-        format.html { redirect_to @amenity}
-
+        format.html do
+          flash[:success] = 'Amenity was successfully created.'
+          redirect_to admin_amenity_path(@amenity)
+        end
       else
         flash[:error] = "There the following errors.  #{@amenity.errors.full_messages.join("")}"
         format.html { render :new }
@@ -47,12 +41,8 @@ class Admin::AmenitiesController < AdminController
     end
   end
 
-  # PATCH/PUT /amenities/1
-  # PATCH/PUT /amenities/1.json
   def update
     input = amenity_params
-    @amenity.pictures.create(input['picture'])
-
     respond_to do |format|
       if @amenity.update({name: input['name'], description: input['description']})
         flash[:success] = 'Amenity was successfully updated.'
@@ -64,14 +54,23 @@ class Admin::AmenitiesController < AdminController
     end
   end
 
-  # DELETE /amenities/1
-  # DELETE /amenities/1.json
+  def delete
+    @amenity = Amenity.find(params[:amenity_id])
+  end
+
   def destroy
+    @amenities = Amenity.all.order(:id)
     @amenity.destroy
     respond_to do |format|
-      flash[:success] =  'Amenity was successfully removed.'
-      format.html { redirect_to amenities_url}
+      format.html do
+        flash[:success] = 'Amenity was successfully removed.'
+        redirect_to admin_amenities_path
+      end
       format.json { head :no_content }
+      format.js do
+        flash.now[:success] = 'Property was successfully removed.'
+        render :layout => false
+      end
     end
   end
 
@@ -92,7 +91,7 @@ class Admin::AmenitiesController < AdminController
       end
     end
     def set_page
-      @page = 'amenites'
+      @page = 'amenities'
     end
 
 end

@@ -1,0 +1,30 @@
+<h2>Amenities Information</h2>
+
+<div class="messages"></div>
+
+<div class="input-group search-bar">
+  <input type="text" class="form-control" placeholder="Search for Amenity">
+  <span class="input-group-btn">
+    <button class="btn btn-primary search-btn" type="button">Search</button>
+  </span>
+</div>
+
+
+<table class="admin-table table table-striped table-hover text-center">
+  <thead class="">
+    <tr class="table-info">
+      <th>ID</th>
+      <th class="text-left">Amenity Name</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody class="amenity-index">
+
+    <%= render "index" %>
+  </tbody>
+</table>
+
+<%= link_to "Add New Amenity", new_admin_amenity_path, class:"btn btn-primary", remote: true %>
+
+<div id="amenity-modal" class="modal fade"></div>

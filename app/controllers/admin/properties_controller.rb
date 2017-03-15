@@ -3,31 +3,24 @@ class Admin::PropertiesController < AdminController
   # before_action :check_admin_status, only: [:new, :edit, :update, :destroy]
   before_action :set_page
   before_action :set_property, only: [:show, :edit, :update, :destroy]
-  # GET /properties
-  # GET /properties.json
+
   def index
       @properties = Property.all.order(:id)
   end
 
-  # GET /properties/1
-  # GET /properties/1.json
   def show
     @pictures = @property.pictures.all
   end
 
-  # GET /properties/new
   def new
     @property = Property.new
     @picture = Picture.new
   end
 
-  # GET /properties/1/edit
   def edit
     @pictures = @property.pictures
   end
 
-  # POST /properties
-  # POST /properties.json
   def create
     input = property_params
     @property = Property.new({name: input['name'], description: input['description'], available: input['available']})
@@ -44,8 +37,7 @@ class Admin::PropertiesController < AdminController
     end
   end
 
-  # PATCH/PUT /properties/1
-  # PATCH/PUT /properties/1.json
+
   def update
     input = property_params
     respond_to do |format|
@@ -61,14 +53,11 @@ class Admin::PropertiesController < AdminController
   def delete
     @property = Property.find(params[:property_id])
   end
-  # DELETE /properties/1
-  # DELETE /properties/1.json
+
   def destroy
     @properties = Property.all.order(:id)
-    # @property.destroy
+    @property.destroy
     respond_to do |format|
-
-
       format.html do
         flash[:success] = 'Property was successfully removed.'
         redirect_to admin_properties_path
@@ -87,7 +76,6 @@ class Admin::PropertiesController < AdminController
       @property = Property.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
       params.require(:property).permit(:name, :description, {picture:['image','caption']}, :available)
     end

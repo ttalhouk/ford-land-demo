@@ -1,0 +1,11 @@
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>New Amenity</h3>
+    </div>
+    <%= form_for [:admin, @amenity] , html: { multipart: true } do |f| %>
+      <%= render 'form', property: @amenity, f: f, picture: @picture, type: "new" %>
+    <% end %>
+
+  </div>
+</div>
