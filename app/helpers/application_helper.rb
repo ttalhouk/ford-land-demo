@@ -10,4 +10,8 @@ module ApplicationHelper
     Gallery.last || Gallery.new
   end
 
+  def get_local_time(time)
+    return time.in_time_zone("Pacific Time (US & Canada)").strftime("%l:%M %P - %m / %d / %Y")
+  end
+
 end

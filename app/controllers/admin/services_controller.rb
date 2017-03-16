@@ -1,8 +1,6 @@
 class Admin::ServicesController < AdminController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
   before_action :set_page
-  # before_action :authenticate_user!
-  # before_action :require_permission
 
   def index
     Service.delete_old_records
@@ -21,12 +19,10 @@ class Admin::ServicesController < AdminController
       if @service.update(service_params)
         ServiceMailer.service_response_email(current_user, @service.user, @service).deliver_now
         flash[:success] = 'Service Request was Successfully Updated'
-        format.html { redirect_to [:admin, @service], notice: 'Service was successfully updated.' }
-        format.json { render :show, status: :ok, location: @service }
+        format.html {redirect_to admin_service_url(@service)}
       else
         flash[:error] = "There the following errors.  #{@service.errors.full_messages.join("")}"
         format.html { render :edit }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
       end
     end
   end

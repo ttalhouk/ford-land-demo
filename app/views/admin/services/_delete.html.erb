@@ -1,14 +1,14 @@
 <div class="modal-dialog">
   <div class="modal-content">
   <div class="modal-header">
-    <h3>Delete Amenity</h3>
+    <h3>Delete Service Request</h3>
   </div>
   <div class="modal-body">
   <ul class="errors"></ul>
-  Are you sure you wish to delete <b><%= @amenity.name %></b>?
+  Are you sure you wish to delete  <b>Service request <%= @service.id %> from <%= @service.user.email %></b>?
   </div>
   <div class="modal-footer">
-    <%= link_to "Yes, Delete This Amenity", admin_amenity_path(@amenity), method: :delete, remote: true, class: "btn btn-danger" %>
+    <%= link_to "Yes, Delete This Service Request", admin_service_path(@service), method: :delete, remote: true, class: "btn btn-danger" %>
     <%= link_to "No, Please Don't", "#", class: "btn btn-outline-secondary", data: { dismiss: "modal" } %>
   </div>
   </div>

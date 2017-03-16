@@ -1,0 +1,10 @@
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Edit Service Request <%= @service.id %></h3>
+    </div>
+    <%= form_for [:admin, @service] , html: { multipart: true } do |f| %>
+      <%= render 'form', service: @service, f: f%>
+    <% end %>
+  </div>
+</div>
