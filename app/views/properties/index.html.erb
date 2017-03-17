@@ -1,7 +1,8 @@
   <p id="notice"><%= notice %></p>
 
-  <h1>Properties</h1>
+  <h2>Properties</h2>
 
+  <% if @properties.any? %>
   <table>
     <thead>
       <tr>
@@ -27,6 +28,9 @@
       <% end %>
     </tbody>
   </table>
+  <% else %>
+  <h3 id="no-properties">No Properties Available</h3>
+  <% end %>
 
   <br>
   <%if is_admin? %>

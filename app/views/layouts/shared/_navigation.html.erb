@@ -12,7 +12,7 @@
         <a class="nav-link" href="#">Calendar</a>
       </li>
       <li class="nav-item <%= @page == 'gallery' ? 'active': '' %>">
-        <%=link_to "Gallery", gallery_path(active_gallery), class:'nav-link', data:{'turbolinks':  false}%>
+        <%=link_to "Gallery", galleries_path, class:'nav-link', data:{'turbolinks':  false}%>
       </li>
         <li class="nav-item dropdown <%= @page == 'amenites' ? 'active': '' %>">
           <a class="nav-link dropdown-toggle" href="/amenties" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

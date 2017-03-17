@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   resources :users, only:[:index] do
     resources :services
   end
-  resources :galleries, only:[:show] do
+  resources :galleries, only:[:index, :show] do
     # resources :pictures, only: [:new, :create, :destroy]
   end
 end
