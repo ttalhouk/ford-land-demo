@@ -46,7 +46,7 @@ class Admin::AmenitiesController < AdminController
     respond_to do |format|
       if @amenity.update({name: input['name'], description: input['description']})
         flash[:success] = 'Amenity was successfully updated.'
-        format.html { redirect_to @amenity}
+        format.html { redirect_to admin_amenity_path(@amenity)}
       else
         flash[:error] = "There the following errors.  #{@amenity.errors.full_messages.join("")}"
         format.html { render :edit }

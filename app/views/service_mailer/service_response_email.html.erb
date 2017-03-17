@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Sevice Request by <%= @service.user.email %> Has Been Updated</h1>
+    <br>
+    <small>Updated at: <%= @service.updated_at.strftime("%l:%M %P - %m / %d / %Y")%></small>
+    <hr />
+    <p>Updated Request Details:</p>
+    <p><%= simple_format(@service.details)%></p>
+    <br>
+    <p>Request Status: <%= @service.open ? "Open" : "Closed" %></p>
+    <hr  />
+    <p>If you feel this is incorrect please email <%= mail_to @admin.email, nil, subject:"Service Request #{@service.id}"%></p>
+
+  </body>
+</html>

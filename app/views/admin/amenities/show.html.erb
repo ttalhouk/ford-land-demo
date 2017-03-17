@@ -4,8 +4,10 @@
   <h3 class="card-header">Amenity: <%= @amenity.name %></h3>
 
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Description: <%= @amenity.description %></li>
-    <li class="list-group-item">Updated At: <%= @amenity.updated_at %></li>
+    <li class="list-group-item">Description: <div class="details">
+      <%= simple_format(@amenity.description) %>
+    </div></li>
+    <li class="list-group-item">Updated At: <%= get_local_time(@amenity.updated_at) %></li>
     <li class="list-group-item">Pictures: <%= @amenity.pictures.count%>
     </li>
   </ul>
@@ -16,24 +18,23 @@
     <div class="col-sm-12 text-center">
       <h3>Amenity Pictures</h3>
     </div>
-    <% @amenity.pictures.each do |picture|%>
-    <div class="col-sm-4">
+    <div class="card-group">
+      <% @amenity.pictures.each do |picture|%>
 
-      <div class="card">
-        <%= image_tag picture.image.url(:medium), class:'card-img-top', alt:"Card image cap"%>
-        <div class="card-block">
-          <p class="card-text">
-            <%= picture.caption%>
-          </p>
-        </div>
-        <div class="card-block text-center">
-          <%= link_to "Delete Picture", admin_amenity_picture_path(@amenity, picture), method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' } %>
-        </div>
-      </div>
+          <div class="card">
+            <%= image_tag picture.image.url(:medium), class:'card-img-top', alt:"Card image cap"%>
+            <div class="card-block">
+              <p class="card-text">
+                <%= picture.caption%>
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <%= link_to "Delete Picture", admin_amenity_picture_path(@amenity, picture), method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
 
-
+      <% end %>
     </div>
-    <% end %>
   </div>
 <% end %>
 <div class="row">

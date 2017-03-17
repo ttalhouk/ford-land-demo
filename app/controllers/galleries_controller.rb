@@ -8,16 +8,6 @@ class GalleriesController < ApplicationController
   def show
     @gallery = Gallery.find(params[:id]) || Gallery.new
   end
-  def create
-    @gallery = Gallery.new
-    if @gallery.save
-      flash[:success] = 'Gallery was successfully created.'
-      format.html { redirect_to galleries_path}
-    else
-      flash[:error] = "Gallery was unable to be created and had the following errors. #{@gallery.errors.full_messages.join('')}" 
-      format.html { render :index }
-    end
-  end
 
   private
 

@@ -4,8 +4,10 @@
   <h3 class="card-header">Property: <%= @property.name %></h3>
 
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Description: <%= @property.description %></li>
-    <li class="list-group-item">Updated At: <%= @property.updated_at %></li>
+    <li class="list-group-item">Description: <div class="details">
+      <%= simple_format(@property.description) %>
+    </div></li>
+    <li class="list-group-item">Updated At: <%= get_local_time(@property.updated_at) %></li>
     <li class="list-group-item">Pictures: <%= @property.pictures.count%>
     </li>
     <li class="list-group-item">Availablity: <%= @property.available ? "Available" : "Occupied"%>
@@ -18,24 +20,22 @@
     <div class="col-sm-12 text-center">
       <h3>Property Pictures</h3>
     </div>
-    <% @property.pictures.each do |picture|%>
-    <div class="col-sm-4">
+    <div class="card-group">
+      <% @property.pictures.each do |picture|%>
 
-      <div class="card">
-        <%= image_tag picture.image.url(:medium), class:'card-img-top', alt:"Card image cap"%>
-        <div class="card-block">
-          <p class="card-text">
-            <%= picture.caption%>
-          </p>
-        </div>
-        <div class="card-block text-center">
-          <%= link_to "Delete Picture", admin_property_picture_path(@property, picture), method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' } %>
-        </div>
-      </div>
-
-
+          <div class="card">
+            <%= image_tag picture.image.url(:medium), class:'card-img-top', alt:"Card image cap"%>
+            <div class="card-block">
+              <p class="card-text">
+                <%= picture.caption %>
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <%= link_to "Delete Picture", admin_property_picture_path(@property, picture), method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 <% end %>
 <div class="row">

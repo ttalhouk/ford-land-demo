@@ -5,7 +5,12 @@ class ServiceMailer < ApplicationMailer
     @user = user
     @service_dept_emails = User.where(admin: true).map{ |admin| admin.email }.join(';')
     @service = service_request
-    # @url  = 'http://example.com/login'
     mail(to: @service_dept_emails, subject: 'Service Request', from: @user.email)
+  end
+
+  def service_response_email(admin, user, service_request)
+    @admin = admin
+    @service = service_request
+    mail(to: user.email, subject: 'Service Request Updated', from: admin.email)
   end
 end

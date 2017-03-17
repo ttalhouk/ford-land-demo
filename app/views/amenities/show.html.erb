@@ -11,9 +11,6 @@
   <strong>Description:</strong>
   <%= @amenity.description %>
 </p>
-<% if is_admin? %>
-  <%= link_to 'Edit', edit_amenity_path(@amenity) %> |
-<% end %>
 <%= link_to 'Back', amenities_path %>
 <br>
 <% @pictures.each do |picture|%>

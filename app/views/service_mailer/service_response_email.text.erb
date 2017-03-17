@@ -1,0 +1,10 @@
+Service Request Update Email from, <%= @admin.email %>
+===============================================
+
+Updated Request:
+<%=simple_format(@service.details)%>
+
+Updated Status:
+<%= @service.open ? "Open" : "Closed" %>
+
+Please respond to <%= @admin.email %> if you need further help.

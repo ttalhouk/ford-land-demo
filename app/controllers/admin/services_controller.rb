@@ -1,66 +1,55 @@
 class Admin::ServicesController < AdminController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-  before_action :require_permission
+  before_action :set_page
 
-  # GET /services
-  # GET /services.json
   def index
-    @services = current_user.services
+
+    Service.delete_old_records
+
+    if params[:user_id]
+      user = User.find(params[:user_id])
+      @services = user.services
+    else
+      @services = Service.all.order(:id)
+    end
   end
 
-  # GET /services/1
-  # GET /services/1.json
   def show
   end
 
-  # GET /services/new
-  def new
-    @service = Service.new
-  end
 
-  # GET /services/1/edit
   def edit
   end
 
-  # POST /services
-  # POST /services.json
-  def create
-    @service = current_user.services.new(service_params)
-
-    respond_to do |format|
-      if @service.save
-        ServiceMailer.service_email(current_user, @service).deliver_now
-        format.html { redirect_to user_service_path(current_user, @service), notice: 'Service Request was successfully created.' }
-        format.json { render :show, status: :created, location: @service }
-      else
-        format.html { render :new }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /services/1
-  # PATCH/PUT /services/1.json
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
-        format.json { render :show, status: :ok, location: @service }
+        ServiceMailer.service_response_email(current_user, @service.user, @service).deliver_now
+        flash[:success] = 'Service Request was Successfully Updated'
+        format.html {redirect_to admin_service_url(@service)}
       else
+        flash[:error] = "There the following errors.  #{@service.errors.full_messages.join("")}"
         format.html { render :edit }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
       end
     end
   end
+  def delete
+    @service = Service.find(params[:service_id])
+  end
 
-  # DELETE /services/1
-  # DELETE /services/1.json
   def destroy
+    @services = @services = Service.all.order(:id)
     @service.destroy
     respond_to do |format|
-      format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
+      format.html do
+        flash[:success] = 'Service Request was successfully removed.'
+        redirect_to admin_services_path
+      end
       format.json { head :no_content }
+      format.js do
+        flash.now[:success] = 'Service Request was successfully removed.'
+        render :layout => false
+      end
     end
   end
 
@@ -69,14 +58,10 @@ class Admin::ServicesController < AdminController
     def set_service
       @service = Service.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:details)
+      params.require(:service).permit(:details, :open )
     end
-    def require_permission
-      if current_user != User.find(params[:user_id])
-        redirect_to root_path
-      end
+    def set_page
+      @page = "services"
     end
 end

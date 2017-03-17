@@ -1,0 +1,30 @@
+<h2>Service Request Information</h2>
+
+<div class="messages"></div>
+
+<div class="input-group search-bar">
+  <input type="text" class="form-control" placeholder="Search for Service Request">
+  <span class="input-group-btn">
+    <button class="btn btn-primary search-btn" type="button">Search</button>
+  </span>
+</div>
+
+
+<table id="infoTable" class="tablesorter admin-table table table-striped table-hover text-center">
+  <thead class="">
+    <tr class="table-info">
+      <th>ID</th>
+      <th class="text-left">Requestor Email</th>
+      <th>Details</th>
+      <th>Open?</th>
+      <th>Created At</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody class="service-index">
+
+    <%= render "index" %>
+  </tbody>
+</table>
+
+<div id="service-modal" class="modal fade"></div>

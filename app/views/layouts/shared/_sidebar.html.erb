@@ -20,8 +20,8 @@
     <% end %>
 
 
-    <%= link_to admin_galleries_path, class:"admin-link" do %>
-      <li class= "admin-item <%= @page == "galleries" ? "current" : ""%>" >
+    <%= link_to admin_galleries_path, class:"admin-link", data:{'turbolinks':  false} do %>
+      <li class= "admin-item <%= @page == "gallery" ? "current" : ""%>" >
         Gallery
       </li>
     <% end %>
