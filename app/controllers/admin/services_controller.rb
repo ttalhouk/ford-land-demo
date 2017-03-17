@@ -3,8 +3,15 @@ class Admin::ServicesController < AdminController
   before_action :set_page
 
   def index
+
     Service.delete_old_records
-    @services = Service.all.order(:id)
+
+    if params[:user_id]
+      user = User.find(params[:user_id])
+      @services = user.services
+    else
+      @services = Service.all.order(:id)
+    end
   end
 
   def show

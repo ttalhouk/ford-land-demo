@@ -1,0 +1,28 @@
+<h2>Gallery Page</h2>
+<div class="gallery_box">
+  <% if @gallery.pictures.any? %>
+    <% @gallery.pictures.each do |picture| %>
+    <div class="gallery_thumbs">
+      <%= link_to picture.image.url, class:"gallery", title:picture.caption, rel:"gallery_1" do %>
+      <%= image_tag picture.image.url(:thumb) %>
+      <% end %>
+        <%= button_to admin_gallery_picture_path(@gallery, picture), method: 'delete', class:'btn btn-danger btn-sm remove', data: { confirm: 'Are you sure?' } do %>
+          <i class="ion-close"></i>
+        <% end %>
+    </div>
+    <% end %>
+  <% end %>
+  <div class="gallery_thumbs">
+    <%= link_to new_admin_gallery_picture_path(@gallery), class:'btn btn-success btn-lg add' do %>
+      <i class="ion-plus-round"></i>
+    <% end %>
+  </div>
+</div>
+
+<div class="admin-links">
+  <% if is_admin? && !@gallery %>
+  <%= link_to 'Create a Gallery', @gallery, method: :post %>
+  <% end %>
+
+
+</div>

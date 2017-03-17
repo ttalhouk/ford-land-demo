@@ -1,4 +1,4 @@
-<h2>Add A New Picture</h2>
+<h2>Add A New Picture for <%= @item.class %></h2>
 
 <%= form_for [:admin, @item, @picture] , html: { multipart: true }  do |f|%>
   <div class="form-group">

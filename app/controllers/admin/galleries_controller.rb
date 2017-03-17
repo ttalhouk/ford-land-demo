@@ -1,9 +1,9 @@
 class Admin::GalleriesController < AdminController
   helper :all
-  before_action :check_admin_status, only: [:create]
   before_action :set_page
   def index
-    @gallery = Gallery.last || nil
+    @gallery = Gallery.last || Gallery.new
+    redirect_to admin_gallery_path(@gallery)
   end
   def show
     @gallery = Gallery.find(params[:id]) || Gallery.new
