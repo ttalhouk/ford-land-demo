@@ -29,16 +29,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :amenities, only:[:index, :show] do
-    # resources :pictures, only: [:new, :create, :destroy]
-  end
-  resources :properties, only:[:index, :show] do
-    # resources :pictures, only: [:new, :create, :destroy]
-  end
+  resources :amenities, only:[:index, :show]
+  resources :properties, only:[:index, :show]
   resources :users, only:[:index] do
     resources :services
   end
-  resources :galleries, only:[:index, :show] do
-    # resources :pictures, only: [:new, :create, :destroy]
-  end
+  resources :galleries, only:[:index, :show]
 end

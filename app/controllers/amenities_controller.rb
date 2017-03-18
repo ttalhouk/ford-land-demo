@@ -1,79 +1,69 @@
 class AmenitiesController < ApplicationController
   helper :all
-  before_action :check_admin_status, only: [:new, :edit, :update, :destroy]
+  # before_action :check_admin_status, only: [:new, :edit, :update, :destroy]
   before_action :set_page
-  before_action :set_amenity, only: [:show, :edit, :update, :destroy]
+  before_action :set_amenity, only: [:show]
 
-  # GET /amenities
-  # GET /amenities.json
   def index
     @amenities = Amenity.all
   end
 
-  # GET /amenities/1
-  # GET /amenities/1.json
   def show
     @pictures = @amenity.pictures.all
   end
 
-  # GET /amenities/new
-  def new
-    @amenity = Amenity.new
-    @pictures = Picture.new
-  end
-
-  # GET /amenities/1/edit
-  def edit
-    @pictures = @amenity.pictures
-  end
-
-  # POST /amenities
-  # POST /amenities.json
-  def create
-    input = amenity_params
-    @amenity = Amenity.new({name: input['name'], description: input['description']})
-
-    respond_to do |format|
-      if @amenity.save
-        @amenity.pictures.create(input['picture'])
-        flash[:success] = 'Amenity was successfully created.'
-        format.html { redirect_to @amenity}
-
-      else
-        flash[:error] = "There the following errors.  #{@amenity.errors.full_messages.join("")}"
-        format.html { render :new }
-
-      end
-    end
-  end
-
-  # PATCH/PUT /amenities/1
-  # PATCH/PUT /amenities/1.json
-  def update
-    input = amenity_params
-    @amenity.pictures.create(input['picture'])
-
-    respond_to do |format|
-      if @amenity.update({name: input['name'], description: input['description']})
-        flash[:success] = 'Amenity was successfully updated.'
-        format.html { redirect_to @amenity}
-      else
-        flash[:error] = "There the following errors.  #{@amenity.errors.full_messages.join("")}"
-        format.html { render :edit }
-      end
-    end
-  end
-
-  # DELETE /amenities/1
-  # DELETE /amenities/1.json
-  def destroy
-    @amenity.destroy
-    respond_to do |format|
-      flash[:success] =  'Amenity was successfully removed.'
-      format.html { redirect_to amenities_url}
-      format.json { head :no_content }
-    end
-  end
+  # def new
+  #   @amenity = Amenity.new
+  #   @pictures = Picture.new
+  # end
+  #
+  # def edit
+  #   @pictures = @amenity.pictures
+  # end
+  #
+  # def create
+  #   input = amenity_params
+  #   @amenity = Amenity.new({name: input['name'], description: input['description']})
+  #
+  #   respond_to do |format|
+  #     if @amenity.save
+  #       @amenity.pictures.create(input['picture'])
+  #       flash[:success] = 'Amenity was successfully created.'
+  #       format.html { redirect_to @amenity}
+  #
+  #     else
+  #       flash[:error] = "There the following errors.  #{@amenity.errors.full_messages.join("")}"
+  #       format.html { render :new }
+  #
+  #     end
+  #   end
+  # end
+  #
+  # def update
+  #   input = amenity_params
+  #   @amenity.pictures.create(input['picture'])
+  #
+  #   respond_to do |format|
+  #     if @amenity.update({name: input['name'], description: input['description']})
+  #       flash[:success] = 'Amenity was successfully updated.'
+  #       format.html { redirect_to @amenity}
+  #     else
+  #       flash[:error] = "There the following errors.  #{@amenity.errors.full_messages.join("")}"
+  #       format.html { render :edit }
+  #     end
+  #   end
+  # end
+  #
+  # # DELETE /amenities/1
+  # # DELETE /amenities/1.json
+  # def destroy
+  #   @amenity.destroy
+  #   respond_to do |format|
+  #     flash[:success] =  'Amenity was successfully removed.'
+  #     format.html { redirect_to amenities_url}
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

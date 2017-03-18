@@ -4,7 +4,7 @@ class GalleriesController < ApplicationController
   before_action :set_page
   def index
     @gallery = Gallery.last || Gallery.new
-    redirect_to admin_gallery_path(@gallery)
+    redirect_to gallery_path(@gallery)
   end
   def show
     @gallery = Gallery.find(params[:id]) || Gallery.new

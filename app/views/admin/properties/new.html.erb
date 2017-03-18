@@ -1,7 +1,7 @@
 <h2>New Property</h2>
 
 <%= form_for [:admin, @property] , html: { multipart: true } do |f| %>
-  <%= render 'form', property: @property, f: f, picture: @picture %>
+  <%= render 'form', property: @property, f: f, picture: @picture, type:"new"%>
 <% end %>
 
 </div>

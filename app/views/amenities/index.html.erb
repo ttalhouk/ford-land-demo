@@ -23,18 +23,8 @@
         <td><%= amenity.name %></td>
         <td><%= amenity.description %></td>
         <td><%= link_to 'Show', amenity %></td>
-        <% if is_admin? %>
-          <td><%= link_to 'Edit', edit_admin_amenity_path(amenity) %></td>
-          <td><%= link_to 'Destroy', admin_amenity_path(amenity), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <td>
-            <%=amenity.pictures.first.image.url(:thumb)%>
-          </td>
-        <% end %>
+        
       </tr>
     <% end %>
   </tbody>
 </table>
-<br>
-<% if is_admin? %>
-  <%= link_to 'New Amenity', new_admin_amenity_path %>
-<% end %>
