@@ -1,38 +1,21 @@
-  <p id="notice"><%= notice %></p>
+<h2>Properties</h2>
 
-  <h2>Properties</h2>
-
-  <% if @properties.any? %>
-  <table>
-    <thead>
-      <tr>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @properties.each do |property| %>
-      <tr>
-        <td>
-          <%= image_tag property.pictures.first.image.url(:thumb) %>
-        </td>
-        <td>
-          <%= property.name %>
-        </td>
-        <td>
-          <%= property.description %>
-        </td>
-        <td><%= link_to 'Show', property %></td>
-
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <% else %>
-  <h3 id="no-properties">No Properties Available</h3>
+<% if @properties.any? %>
+<div class="container-fluid">
+  <% @properties.each_with_index do |property, index| %>
+    <div class="bubble <%= index % 2 == 0 ? 'bubble-even' : ''%>">
+      <div data-transition="entrance" data-duration=700 data-easing= "cubic-bezier(.2,.7,.5,1)" data-delay=200 style="transform: translateY(50px)" class="bubble-picture <%= index % 2 == 0 ? 'left' : 'right'%>">
+        <%= image_tag property.pictures.first.image.url(:medium)%>
+      </div>
+      <div class="bubble-text <%= index % 2 == 0 ? 'right' : 'left'%>">
+        <%= link_to property do %>
+          <h3 class="bubble-title"><%= property.name %></h3>
+        <% end %>
+        <p class="bubble-info"><%= simple_format(property.description) %></p>
+      </div>
+    </div>
   <% end %>
-
-  <br>
-  <%if is_admin? %>
-  <%= link_to 'New Property', new_admin_property_path %>
-  <% end %>
+</div>
+<% else %>
+<h3 id="no-properties">No Properties Available</h3>
+<% end %>

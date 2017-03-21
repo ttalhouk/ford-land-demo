@@ -282,7 +282,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.0)
   rails-assets-tether (>= 1.1.0)
-  rspec-rails (= 3.5.2)
+  rspec-rails
   sass-rails (~> 5.0)
   simple_form
   spring

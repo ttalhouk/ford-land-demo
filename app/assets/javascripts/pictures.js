@@ -3,10 +3,6 @@
 
 $(document).ready(function(){
 
-
-// $(document).on('turbolinks:load', function(){
-
-  console.log('fancybox active');
   $('a.gallery').fancybox({
     'transitionIn'	:	'elastic',
     'transitionOut'	:	'elastic',

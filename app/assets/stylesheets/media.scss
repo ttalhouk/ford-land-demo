@@ -1,11 +1,65 @@
 // Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575px) {}
+@media (max-width: 575px) {
+  .bubble {
+    // margin-bottom: 3em;
+    position: static;
+    // width: 100%;
+    margin: 3em 0;
+    clear:both;
+    .bubble-picture {
+      position:static;
+      margin: 2em auto;
+      img {
+        width: 100%;
+      }
+    }
+    .bubble-text{
+      // max-width: 100%;
+      // width: 100%;
+      // min-height: 10em;
+      margin: 1em auto;
+      &.right {
+        padding: 1em 2em;
+      }
+      &.left {
+        padding: 1em 2em;
+      }
+    }
+  }
+}
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) and (max-width: 767px) {}
+@media (min-width: 576px) and (max-width: 767px) {
+  .bubble {
+    // margin-bottom: 3em;
+    position: static;
+    // width: 100%;
+    margin: 3em 0;
+    clear:both;
+    .bubble-picture {
+      position:static;
+      margin: 2em auto;
+      img {
+        width: 100%;
+      }
+    }
+    .bubble-text{
+
+      margin: 1em auto;
+      &.right {
+        padding: 1em 2em;
+      }
+      &.left {
+        padding: 1em 2em;
+      }
+    }
+  }
+}
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) and (max-width: 991px) {}
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) and (max-width: 1199px) {}

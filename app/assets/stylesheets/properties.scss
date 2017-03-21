@@ -1,3 +1,60 @@
 // Place all the styles related to the Properties controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.bubble {
+  border-radius: 10px;
+  margin-bottom: 3em;
+  &::before, &::after {
+    content: "";
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+  position: relative;
+  width: 100%;
+  margin: 3em 0;
+  clear:both;
+  background-color: #dbe9df;
+  &.bubble-even {
+    background-color: darken(#dbe9df, 20%);
+  }
+  .bubble-picture {
+    width: 17em;
+    border-radius: .5em;
+    overflow: hidden;
+    box-shadow: 0px 9px 30px 0px rgba(44, 55, 79, .4);
+    position:absolute;
+    top: -2em;
+    &.left{
+      left: 2em;
+    }
+    &.right{
+      right: 2em;
+    }
+      img {
+        width: 100%;
+      }
+  }
+  .bubble-text{
+    max-width: 100%;
+    width: 100%;
+    min-height: 12em;
+    &.right {
+      padding: 2em 5em 2em 22em;
+    }
+    &.left {
+      padding: 2em 22em 2em 5em;
+    }
+    .bubble-title{
+      font-size: 21px;
+      letter-spacing: 0px;
+      font-weight: 400;
+    }
+    .bubble-info {
+      font-size: 1.1em;
+      line-height: 1.75;
+    }
+  }
+}

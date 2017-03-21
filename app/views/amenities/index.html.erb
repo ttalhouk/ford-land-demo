@@ -1,30 +1,21 @@
-<p id="notice"><%= notice %></p>
+<h2>Amenities</h2>
 
-<h1>Amenities</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>
-        Image
-      </th>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @amenities.each do |amenity| %>
-      <tr>
-        <td>
-          <%=image_tag amenity.pictures.first.image.url(:thumb)%>
-        </td>
-        <td><%= amenity.name %></td>
-        <td><%= amenity.description %></td>
-        <td><%= link_to 'Show', amenity %></td>
-        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if @amenities.any? %>
+<div class="container-fluid">
+  <% @amenities.each_with_index do |amenity, index| %>
+    <div class="bubble <%= index % 2 == 0 ? 'bubble-even' : ''%>">
+      <div data-transition="entrance" data-duration=700 data-easing= "cubic-bezier(.2,.7,.5,1)" data-delay=200 style="transform: translateY(50px)" class="bubble-picture <%= index % 2 == 0 ? 'left' : 'right'%>">
+        <%= image_tag amenity.pictures.first.image.url(:medium)%>
+      </div>
+      <div class="bubble-text <%= index % 2 == 0 ? 'right' : 'left'%>">
+        <%= link_to amenity do %>
+          <h3 class="bubble-title"><%= amenity.name %></h3>
+        <% end %>
+        <p class="bubble-info"><%= simple_format(amenity.description) %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+<% else %>
+<h3 id="no-amenities">No Amenities Available</h3>
+<% end %>
