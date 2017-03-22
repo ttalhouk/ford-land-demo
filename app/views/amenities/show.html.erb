@@ -1,18 +1,13 @@
-<p id="notice"><%= notice %></p>
+<h2><%= @amenity.name %></h2>
 
-<%= image_tag @pictures.last.image.url(:medium), class:'img'%>
-
-<p>
-  <strong>Name:</strong>
-  <%= @amenity.name %>
-</p>
+<div class="slideshow">
+  <% @amenity.pictures.each_with_index do |picture, index|%>
+    <%= image_tag picture.image.url(:medium), class:"img  #{ index != 0 ? '' : 'show'}"%>
+  <% end %>
+</div>
 
 <p>
   <strong>Description:</strong>
-  <%= @amenity.description %>
+  <%= @amenity.description.html_safe %>
 </p>
 <%= link_to 'Back', amenities_path %>
-<br>
-<% @pictures.each do |picture|%>
-<%= image_tag picture.image.url(:medium), class:'img'%>
-<% end %>

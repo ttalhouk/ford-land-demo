@@ -33,9 +33,9 @@
     &.right{
       right: 2em;
     }
-      img {
-        width: 100%;
-      }
+    img {
+      width: 100%;
+    }
   }
   .bubble-text{
     max-width: 100%;
@@ -55,6 +55,28 @@
     .bubble-info {
       font-size: 1.1em;
       line-height: 1.75;
+    }
+  }
+}
+
+.slideshow {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  display: inline-block;
+  float: left;
+  margin: 0 40px 10px 40px;
+  .img {
+    position: absolute;
+    box-shadow: 0px 9px 30px 0px rgba(44, 55, 79, .4);
+    opacity: 0;
+    transform:scale(0);
+    transform-origin: 0% 100%;
+    transition: opacity 700ms ease-in-out, transform 1000ms ease-in-out;
+    &.show {
+      left: 0px;
+      opacity: 1;
+      transform:scale(1);
     }
   }
 }
