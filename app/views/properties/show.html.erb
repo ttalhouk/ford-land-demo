@@ -1,4 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2><%= @property.name %></h2>
+    </div>
+    <div class="col-lg-8 push-lg-4">
+      <div class="item-content ml-lg-5">
+        <p>
+          <strong>Description:</strong>
+          <%= @property.description.html_safe %>
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-4 pull-lg-8">
+      <div class="slideshow">
+        <% @property.pictures.each_with_index do |picture, index|%>
+        <%= image_tag picture.image.url(:medium), class:"img  #{ index != 0 ? '' : 'show'}"%>
+        <% end %>
+      </div>
+    </div>
 
-
-<%= link_to 'Back', properties_path %>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= link_to 'Back', properties_path, data: {turbolinks: false} %>
+    </div>
+  </div>
+</div>

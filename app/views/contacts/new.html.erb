@@ -1,28 +1,33 @@
-<div align="center">
-  <h3>Send A message to Us</h3>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="text-center">
+        <h2>Send Us A Message</h2>
+        <%= simple_form_for @contact do |f| %>
+          <div class="form-group">
+            <%= f.label :name, 'Enter Your Name'%>
+            <%= f.text_field :name, :required => true, class:'form-control', placeholder: "Your Name" %>
+          </div>
 
-  <%= simple_form_for @contact do |f| %>
-    <div class="form-group">
-      <%= f.label :name, 'Enter Your Name'%>
-      <%= f.text_field :name, :required => true, class:'form-control' %>
-    </div>
+          <div class="form-group">
+            <%= f.label :email, 'Enter Your Email'%>
+            <%= f.text_field :email, :required => true, type: 'email', class:'form-control', placeholder: "eg: abc@gmail.com" %>
+          </div>
 
-    <div class="form-group">
-      <%= f.label :email, 'Enter Your Email'%>
-      <%= f.text_field :email, :required => true, type: 'email', class:'form-control' %>
-    </div>
+          <div class="form-group">
+            <%= f.label :message, 'Enter Your Message'%>
+            <%= f.text_area :message, :as => :text, :required => true, class:'form-control', rows:'5', placeholder: "Your Message" %>
+          </div>
 
-    <div class="form-group">
-      <%= f.label :message, 'Enter Your Message'%>
-      <%= f.text_area :message, :as => :text, :required => true, class:'form-control', rows:'5' %>
+          <div class="hidden">
+            <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+          </div>
+          </br>
+          <div>
+            <%= f.button :submit, 'Send Message', class: "btn btn-primary" %>
+          </div>
+      <% end %>
+      </div>
     </div>
-
-    <div class="hidden">
-      <%= f.input :nickname, :hint => 'Leave this field blank!' %>
-    </div>
-    <div>
-      </br>
-      <%= f.button :submit, 'Send message', class: "btn btn-primary" %>
-    </div>
-  <% end %>
+  </div>
 </div>

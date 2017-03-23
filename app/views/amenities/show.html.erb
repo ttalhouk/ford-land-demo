@@ -1,13 +1,28 @@
-<h2><%= @amenity.name %></h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2><%= @amenity.name %></h2>
+    </div>
+    <div class="col-lg-8 push-lg-4">
+      <div class="item-content ml-lg-5">
+        <p>
+          <strong>Description:</strong>
+          <%= @amenity.description.html_safe %>
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-4 pull-lg-8">
+      <div class="slideshow">
+        <% @amenity.pictures.each_with_index do |picture, index|%>
+        <%= image_tag picture.image.url(:medium), class:"img  #{ index != 0 ? '' : 'show'}"%>
+        <% end %>
+      </div>
+    </div>
 
-<div class="slideshow">
-  <% @amenity.pictures.each_with_index do |picture, index|%>
-    <%= image_tag picture.image.url(:medium), class:"img  #{ index != 0 ? '' : 'show'}"%>
-  <% end %>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= link_to 'Back', amenities_path, data: {turbolinks: false} %>
+    </div>
+  </div>
 </div>
-
-<p>
-  <strong>Description:</strong>
-  <%= @amenity.description.html_safe %>
-</p>
-<%= link_to 'Back', amenities_path %>
