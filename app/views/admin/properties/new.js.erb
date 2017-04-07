@@ -1,2 +1,3 @@
 $("#property-modal").html("<%= escape_javascript(render 'new') %>")
 $("#property-modal").modal("show")
+$('.modal').find('textarea').markItUp(mySettings)

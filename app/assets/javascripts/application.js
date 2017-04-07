@@ -12,11 +12,12 @@
 //
 //= require jquery
 //= require jquery.turbolinks
-//= require jquery.tablesorter
 //= require tether
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require toolkit
 //= require fancybox
+//= require set.js
+//= require jquery.markitup.js
+//= require jquery.tablesorter
 //= require turbolinks
 //= require_tree .

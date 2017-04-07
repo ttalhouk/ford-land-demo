@@ -1,3 +1,4 @@
 $("#property-modal").html("<%=escape_javascript(render 'edit') %>");
 
-$("#property-modal").modal("show")
+$("#property-modal").modal("show");
+$('.modal').find('textarea').markItUp(mySettings)
