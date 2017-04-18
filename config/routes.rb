@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
+    get '/templates/preview.html', to: 'home#preview', as: 'preview'
     get '/', to:'home#index'
     resources :amenities do
       get "delete"
