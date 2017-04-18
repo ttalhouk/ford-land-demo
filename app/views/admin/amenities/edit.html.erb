@@ -1,7 +1,7 @@
 <h2>Editing Amenity</h2>
 
 <%= form_for [:admin, @amenity], html: { multipart: true } do |f| %>
-  <%= render 'form', amenity: @amenity, f: f, pictures: @pictures %>
+  <%= render 'form', amenity: @amenity, f: f, pictures: @pictures, document: @document, type: "edit" %>
 <% end %>
 |
 <%= link_to 'Back', admin_amenities_path, class:"btn btn-primary btn-sm" %>

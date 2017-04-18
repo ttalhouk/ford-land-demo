@@ -13,10 +13,12 @@ Rails.application.routes.draw do
     resources :amenities do
       get "delete"
       resources :pictures, only: [:new, :create, :destroy]
+      resources :documents, only: [:new, :create, :destroy]
     end
     resources :properties do
       get "delete"
       resources :pictures, only: [:new, :create, :destroy]
+      resources :documents, only: [:new, :create, :destroy]
     end
     resources :users, only:[:index, :show, :edit, :update, :destroy] do
       get "delete"
@@ -27,6 +29,9 @@ Rails.application.routes.draw do
     end
     resources :galleries, only:[:index, :show] do
       resources :pictures, only: [:new, :create, :destroy]
+    end
+    resources :forms do
+      get "delete"
     end
   end
 

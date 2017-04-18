@@ -20,26 +20,45 @@
     </div>
     <div class="card-group">
       <% @amenity.pictures.each do |picture|%>
+        <div class="card">
 
-          <div class="card">
             <%= image_tag picture.image.url(:medium), class:'card-img-top', alt:"Card image cap"%>
-            <div class="card-block">
+          <div class="row card-block align-items-end justify-content-center">
+            <p class="card-text align-self-end">
+              <%= picture.caption%>
+            </p>
+          </div>
+          <div class="card-footer text-center">
+            <%= link_to "Delete Picture", admin_amenity_picture_path(@amenity, picture), method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      <% end %>
+
+      <% @amenity.documents.each do |document|%>
+          <div class="card">
+            <%= link_to document.doc.url do %>
+              <div class="row doc-icon justify-content-center align-items-center">
+                <i class='ion-document-text'></i>
+              </div>
+            <% end %>
+            <div class="row card-block align-items-end justify-content-center">
               <p class="card-text">
-                <%= picture.caption%>
+                <%= document.title %>
               </p>
             </div>
             <div class="card-footer text-center">
-              <%= link_to "Delete Picture", admin_amenity_picture_path(@amenity, picture), method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' } %>
+              <%= link_to "Delete Document", admin_amenity_document_path(@amenity, document), method: :delete, class:"btn btn-danger", data: { confirm: 'Are you sure?' } %>
             </div>
           </div>
-
       <% end %>
+
     </div>
   </div>
 <% end %>
 <div class="row">
   <div class="col-sm-12">
     <%= link_to "Add Picture", new_admin_amenity_picture_path(@amenity), class:"btn btn-success" %>
+    <%= link_to "Add Document", new_admin_amenity_document_path(@amenity), class:"btn btn-secondary" %>
     <%= link_to "Back", admin_amenities_path, class:"btn btn-primary"%>
   </div>
 </div>

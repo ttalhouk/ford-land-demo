@@ -10,6 +10,7 @@ class Admin::AmenitiesController < AdminController
 
   def show
     @pictures = @amenity.pictures.all
+    @documents = @amenity.documents.all
   end
 
   def new
@@ -19,6 +20,7 @@ class Admin::AmenitiesController < AdminController
 
   def edit
     @pictures = @amenity.pictures
+    @documents = @amenity.documents
   end
 
   def create
@@ -28,6 +30,7 @@ class Admin::AmenitiesController < AdminController
     respond_to do |format|
       if @amenity.save
         @amenity.pictures.create(input['picture'])
+        @amenity.documents.create(input['document'])
         flash[:success] = 'Amenity was successfully created.'
         format.html do
           flash[:success] = 'Amenity was successfully created.'
@@ -82,7 +85,7 @@ class Admin::AmenitiesController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def amenity_params
-      params.require(:amenity).permit(:name, :description, {picture:['image','caption']})
+      params.require(:amenity).permit(:name, :description, {picture:['image','caption']},{document:['doc','title']})
     end
     def check_admin_status
       unless is_admin?

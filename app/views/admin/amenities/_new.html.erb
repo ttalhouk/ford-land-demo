@@ -4,7 +4,7 @@
       <h3>New Amenity</h3>
     </div>
     <%= form_for [:admin, @amenity] , html: { multipart: true } do |f| %>
-      <%= render 'form', property: @amenity, f: f, picture: @picture, type: "new" %>
+      <%= render 'form', property: @amenity, f: f, picture: @picture, document: @document, type: "new" %>
     <% end %>
 
   </div>

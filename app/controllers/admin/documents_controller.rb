@@ -1,20 +1,20 @@
-class Admin::PicturesController < AdminController
+class Admin::DocumentsController < AdminController
   helper :all
   before_action :check_admin_status, only: [:new, :destroy]
   before_action :set_item
-  before_action :set_picture, only:[:destroy]
+  before_action :set_document, only:[:destroy]
 
 
   def new
-    @picture = Picture.new
-    p @picture.image
+    @document = Document.new
+    p @document.doc
   end
 
   def create
-    @picture = @item.pictures.new(picture_params)
+    @document = @item.documents.new(document_params)
     respond_to do |format|
-      if @picture.save
-        format.html { redirect_to @path, notice: 'Picture was successfully added.' }
+      if @document.save
+        format.html { redirect_to @path, notice: 'Document was successfully added.' }
       else
         format.html { render :new }
       end
@@ -22,9 +22,9 @@ class Admin::PicturesController < AdminController
   end
 
   def destroy
-    @picture.destroy
+    @document.destroy
     respond_to do |format|
-      format.html { redirect_to @path, notice: 'Picture was successfully destroyed.' }
+      format.html { redirect_to @path, notice: 'Document was successfully destroyed.' }
       format.json { head :no_content }
     end
 
@@ -39,17 +39,17 @@ class Admin::PicturesController < AdminController
     elsif params[:property_id]
       @item = Property.find(params[:property_id])
       @path = "/admin/properties/#{params[:property_id]}"
-    elsif params[:gallery_id]
-      @item = Gallery.find(params[:gallery_id])
-      @path = "/admin/galleries/#{params[:gallery_id]}"
+    elsif params[:form_id]
+      @item = Form.find(params[:form_id])
+      @path = "/admin/forms/#{params[:form_id]}"
     end
   end
-  def set_picture
-    @picture = Picture.find(params[:id])
+  def set_document
+    @document = Document.find(params[:id])
   end
   # Never trust parameters from the scary internet, only allow the white list through.
-  def picture_params
-    params.require(:picture).permit(:image, :caption)
+  def document_params
+    params.require(:document).permit(:doc, :title)
   end
   def check_admin_status
     unless is_admin?

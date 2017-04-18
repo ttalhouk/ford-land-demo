@@ -1,0 +1,15 @@
+<h2>Add A New Document for <%= @item.class %></h2>
+
+<%= form_for [:admin, @item, @document] , html: { multipart: true }  do |f|%>
+  <div class="form-group">
+    <%= f.label :doc %>
+    <%= f.file_field :doc, class:'form-control-file'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class:'form-control'%>
+  </div>
+  <div class="actions">
+    <%= f.submit class:'btn btn-primary'%>
+  </div>
+<% end %>
