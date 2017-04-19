@@ -8,6 +8,9 @@
       <li class="nav-item <%= @page == 'lease' ? 'active': '' %>">
         <%=link_to "Available For Lease", properties_path, class:'nav-link', data:{'turbolinks':  false}%>
       </li>
+      <li class="nav-item <%= @page == 'form' ? 'active': '' %>">
+        <%=link_to "Forms", forms_path, class:'nav-link'%>
+      </li>
       <li class="nav-item <%= @page == 'calendar' ? 'active': '' %>">
         <a class="nav-link" href="#">Calendar</a>
       </li>

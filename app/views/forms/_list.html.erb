@@ -1,0 +1,5 @@
+<li class="list-group-item">
+  <%= link_to document.doc.url do%>
+    <i class='ion-document-text'></i> <%= document.title %> <small>(last updated: <%= time_ago_in_words(document.updated_at) %>)</small>
+  <% end %>
+</li>

@@ -41,4 +41,5 @@ Rails.application.routes.draw do
     resources :services
   end
   resources :galleries, only:[:index, :show]
+  resources :forms, only:[:index, :show]
 end
