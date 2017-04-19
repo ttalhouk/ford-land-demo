@@ -2,21 +2,11 @@ class Admin::FormsController < AdminController
   helper :all
   before_action :set_page
   def index
-    @form = Form.last || Form.new
-    redirect_to admin_form_path(@form)
+    @form = Form.last || Form.create
   end
+
   def show
-    @form = Form.find(params[:id]) || Form.new
-  end
-  def create
-    @form = Form.new
-    if @form.save
-      flash[:success] = 'Form was successfully created.'
-      format.html { redirect_to forms_path}
-    else
-      flash[:error] = "Form was unable to be created and had the following errors. #{@form.errors.full_messages.join('')}"
-      format.html { render :index }
-    end
+    redirect_to admin_forms_path
   end
 
   private

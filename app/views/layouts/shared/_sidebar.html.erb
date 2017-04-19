@@ -26,6 +26,12 @@
       </li>
     <% end %>
 
+    <%= link_to admin_forms_path, class:"admin-link", data:{'turbolinks':  false} do %>
+      <li class= "admin-item <%= @page == "form" ? "current" : ""%>" >
+        Forms
+      </li>
+    <% end %>
+
     <%= link_to admin_services_path, class:"admin-link" do %>
       <li class= "admin-item <%= @page == "services" ? "current" : ""%>">
         Service Requests

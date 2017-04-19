@@ -17,6 +17,8 @@
 .byebug_history
 
 /public/system/pictures/images
+/public/system/documents/docs
+
 
 # Ignore application configuration
 /config/application.yml

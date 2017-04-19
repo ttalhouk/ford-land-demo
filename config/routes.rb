@@ -30,8 +30,8 @@ Rails.application.routes.draw do
     resources :galleries, only:[:index, :show] do
       resources :pictures, only: [:new, :create, :destroy]
     end
-    resources :forms do
-      get "delete"
+    resources :forms, only:[:index, :show] do
+      resources :documents, only: [:new, :create, :destroy]
     end
   end
 

@@ -7,7 +7,6 @@ class Admin::DocumentsController < AdminController
 
   def new
     @document = Document.new
-    p @document.doc
   end
 
   def create
@@ -47,7 +46,7 @@ class Admin::DocumentsController < AdminController
   def set_document
     @document = Document.find(params[:id])
   end
-  # Never trust parameters from the scary internet, only allow the white list through.
+
   def document_params
     params.require(:document).permit(:doc, :title)
   end

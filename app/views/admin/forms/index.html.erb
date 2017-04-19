@@ -1,0 +1,29 @@
+<h2>Forms Information</h2>
+
+<div class="messages"></div>
+
+<div class="input-group search-bar">
+  <input type="text" class="form-control" placeholder="Search for Amenity">
+  <span class="input-group-btn">
+    <button class="btn btn-primary search-btn" type="button">Search</button>
+  </span>
+</div>
+
+
+<table id="infoTable" class="tablesorter admin-table table table-striped table-hover text-center">
+  <thead class="">
+    <tr class="table-info">
+      <th>ID</th>
+      <th class="text-left">Document Title</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody class="document-index">
+
+    <%= render "index" %>
+  </tbody>
+</table>
+
+<%= link_to "Add New Form Document", new_admin_form_document_path(@form), class:"btn btn-primary"%>
+
+<div id="form-modal" class="modal fade"></div>
