@@ -10,6 +10,8 @@
     <li class="list-group-item">Updated At: <%= get_local_time(@property.updated_at) %></li>
     <li class="list-group-item">Pictures: <%= @property.pictures.count%>
     </li>
+    <li class="list-group-item">Documents: <%= @property.documents.count%>
+    </li>
     <li class="list-group-item">Availablity: <%= @property.available ? "Available" : "Occupied"%>
     </li>
   </ul>
@@ -41,6 +43,7 @@
 <div class="row">
   <div class="col-sm-12">
     <%= link_to "Add Picture", new_admin_property_picture_path(@property), class:"btn btn-success" %>
+    <%= link_to "Add Document", new_admin_property_document_path(@property), class:"btn btn-secondary" %>
     <%= link_to "Back", admin_properties_path, class:"btn btn-primary"%>
   </div>
 </div>

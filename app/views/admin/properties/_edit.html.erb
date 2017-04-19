@@ -4,7 +4,7 @@
       <h3>Edit Property <%= @property.name %></h3>
     </div>
     <%= form_for [:admin, @property] , html: { multipart: true } do |f| %>
-      <%= render 'form', property: @property, f: f, picture: @picture, type: "edit" %>
+      <%= render 'form', property: @property, document: @document, f: f, picture: @picture, type: "edit" %>
     <% end %>
   </div>
 </div>
